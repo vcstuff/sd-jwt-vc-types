@@ -31,7 +31,7 @@ This specification describes metadata for SD-JWT based Verifiable Credentials.
 
 The SD-JWT VC specification [@!I-D.oauth-sd-jwt-vc] defines the JWT claim `vct`
 (for verifiable credential type). The `vct` value serves as an identifier for
-the type of the SD-JWT VC. 
+the type of the SD-JWT VC.
 
 A type is associated with rules defining which claims may or must appear in the
 Unsecured Payload of the SD-JWT VC and whether they may, must, or must not be
@@ -167,7 +167,7 @@ The following is an example for a metadata document:
             "sd": "always"
         }
     },
-    
+
     "schema_url": "https://exampleuniversity.com/public/credential-schema-0.9",
     "schema_url#integrity": "sha256-o984vn819a48ui1llkwPmKjZ5t0WRL5ca_xGgX3c1VLmXfh"
 }
@@ -204,7 +204,7 @@ defined:
 - `description`: A human-readable description for the type, intended for
   developers reading the JSON document. This property is OPTIONAL.
 - `extends`: A URI of another type that this type extends, as described in
-  (#ExtendingMetadata). This property is OPTIONAL. 
+  (#ExtendingMetadata). This property is OPTIONAL.
 - `display`: An object containing display information for the type, as described
   in (#DisplayMetadata). This property is OPTIONAL.
 - `claims`: An object containing claim information for the type, as described in
@@ -322,9 +322,9 @@ MUST contain at least one of the following properties:
 # Claim Metadata {#ClaimMetadata}
 
 The `claims` property is an object containing information about particular claims
-for displaying and validating the claims. 
+for displaying and validating the claims.
 
-The object MAY contain a property for each claim that is supported by the type. 
+The object MAY contain a property for each claim that is supported by the type.
 The property name MUST be a JSON Pointer [@!RFC6901] pointing to the claim in the
 credential. The property value MUST be an object containing the following
 properties:
@@ -346,7 +346,7 @@ validate the claim.
 The `display` property is an object containing display information for the
 claim. The object MUST contain a property for each language that is supported by
 the type. The property name MUST be a language tag as defined in Section 2 of
-[@!RFC5646]. The consuming application MUST use the language tag it considers most 
+[@!RFC5646]. The consuming application MUST use the language tag it considers most
 appropriate for the user.
 
 The property value MUST be an object containing the following properties:
@@ -362,7 +362,7 @@ The `verification` property is a string indicating how the claim is verified.
 The following values are defined:
 
 - `self-attested`: The claim's value was self-attested by the End-User towards
-  the Issuer. The Issuer did not verify the claim. For example, in a diploma, 
+  the Issuer. The Issuer did not verify the claim. For example, in a diploma,
   the residential address of the student may be self-attested.
 - `verified`: The claim's value was verified by the Issuer. The Issuer may have
   used a third party to verify the claim. For example, in a diploma, the birth
@@ -429,7 +429,7 @@ disclose the claim to the Verifier.
 The SVG rendering method is based on work of the W3C CCG: https://w3c-ccg.github.io/vc-render-method/
 
 The authors would like to thank the following people for their contributions to
-this document and the discussions around it: 
+this document and the discussions around it:
 Giuseppe De Marco,
 Paul Bastian,
 Oliver Terbu,
