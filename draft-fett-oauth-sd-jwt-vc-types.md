@@ -175,6 +175,8 @@ The following is an example for a metadata document:
 
 # Retrieving Metadata {#RetrievingMetadata}
 
+## From the `vct` Claim
+
 In an SD-JWT VC, a URI in the `vct` claim can be used to express a type. If the
 type is a URL, metadata can be retrieved from the URL
 `https://<authority>/.well-known/vct/<type>`, i.e., by inserting
@@ -185,6 +187,16 @@ object as defined in (#MetadataFormat).
 
 If the claim `vct#integrity` is present in the SD-JWT VC, its value
 `vct#integrity` MUST be an "integrity metadata" string as defined in Section (#Integrity).
+
+## From a Registry
+
+A consuming application MAY use a registry to retrieve metadata for a type,
+e.g., if the type is not a URL or if the consuming application does not have
+access to the URL. The registry MUST be a trusted registry, i.e., the consuming
+application MUST trust the registry to provide correct metadata for the type.
+
+The registry MUST provide the metadata in the same format as described in
+(#MetadataFormat).
 
 # Document Integrity {#Integrity}
 
