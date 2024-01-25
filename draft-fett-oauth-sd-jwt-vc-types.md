@@ -25,3 +25,23 @@ organization="Authlete Inc. "
 
 This specification describes the concepts of types for SD-JWT based Verifiable Credentials.
 
+
+{mainmatter}
+
+
+
+# Introduction
+
+TBD
+
+{backmatter}
+
+# Acknowledgements {#Acknowledgements}
+
+# Document History
+
+Individual draft
+
+-00
+
+* Initial version
