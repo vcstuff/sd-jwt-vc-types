@@ -227,7 +227,7 @@ type.
 
 The extended type MAY itself extend another type. This can be used to create a
 chain or hierarchy of types. The security considerations described in
-(#CircularExtends) apply in order to avoid problems with circular dependencies.
+(#CircularExtends) apply in order to avoid problems with {ircular dependencies}
 
 The following processing rules apply for extending types (recursively for all extended types):
 
@@ -390,7 +390,7 @@ credential against the provided JSON Schema document.
 
 # Security Considerations
 
-## Circular "extends" Dependencies (#CircularExtends)
+## Circular "extends" Dependencies {#CircularExtends}
 
 A type MUST NOT extend another type that extends (either directly or with steps
 in-between) the first type. This would result in a circular dependency that
