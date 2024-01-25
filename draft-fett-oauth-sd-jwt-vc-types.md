@@ -29,7 +29,7 @@ This specification describes metadata for SD-JWT based Verifiable Credentials.
 
 # Introduction
 
-The SD-JWT VC specification [@!I-D.oauth-sd-jwt-vc] defines the JWT claim `vct`
+The SD-JWT VC specification [@!I-D.ietf-oauth-sd-jwt-vc] defines the JWT claim `vct`
 (for verifiable credential type). The `vct` value serves as an identifier for
 the type of the SD-JWT VC.
 
