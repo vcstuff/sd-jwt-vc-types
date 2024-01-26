@@ -239,7 +239,7 @@ type.
 
 The extended type MAY itself extend another type. This can be used to create a
 chain or hierarchy of types. The security considerations described in
-(#CircularExtends) apply in order to avoid problems with {ircular dependencies}
+(#CircularExtends) apply in order to avoid problems with circular dependencies.
 
 The following processing rules apply for extending types (recursively for all extended types):
 
