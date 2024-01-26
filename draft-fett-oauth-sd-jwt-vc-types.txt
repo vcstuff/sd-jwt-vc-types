@@ -4,8 +4,8 @@
 
 Web Authorization Protocol                                       D. Fett
 Internet-Draft                                             Authlete Inc.
-Intended status: Standards Track                         25 January 2024
-Expires: 28 July 2024
+Intended status: Standards Track                         26 January 2024
+Expires: 29 July 2024
 
 
                         SD-JWT VC Type Metadata
@@ -42,7 +42,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 28 July 2024.
+   This Internet-Draft will expire on 29 July 2024.
 
 Copyright Notice
 
@@ -301,7 +301,7 @@ Table of Contents
    The extended type MAY itself extend another type.  This can be used
    to create a chain or hierarchy of types.  The security considerations
    described in Section 10.1 apply in order to avoid problems with
-   {ircular dependencies}
+   circular dependencies.
 
    The following processing rules apply for extending types (recursively
    for all extended types):
