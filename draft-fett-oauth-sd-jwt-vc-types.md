@@ -55,7 +55,7 @@ intended to be used, among other things, for the following purposes:
 Applications using this specification are called "consuming applications" in the
 following. This typically includes Issuers, Verifiers, and Wallets.
 
-# Example
+# Example {#Example}
 
 All examples in this section are non-normative.
 
