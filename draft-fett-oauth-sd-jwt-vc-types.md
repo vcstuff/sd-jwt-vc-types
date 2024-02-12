@@ -34,8 +34,7 @@ The SD-JWT VC specification [@!I-D.ietf-oauth-sd-jwt-vc] defines the JWT claim `
 the type of the SD-JWT VC.
 
 A type is associated with rules defining which claims may or must appear in the
-Unsecured Payload of the SD-JWT VC and whether they may, must, or must not be
-selectively disclosable.
+SD-JWT VC and whether they may, must, or must not be selectively disclosable.
 
 This specification defines metadata that can be associated with a type as well
 as a method for retrieving the metadata and processing rules. This metadata is
@@ -60,8 +59,7 @@ following. This typically includes Issuers, Verifiers, and Wallets.
 
 All examples in this section are non-normative.
 
-In an SD-JWT VC, `vct` can be used to express a type. If the type is a URI,
-metadata can be retrieved as described in (#RetrievingMetadata).
+In an SD-JWT VC, `vct` can be used to express a type. Metadata can be retrieved as described in (#RetrievingMetadata).
 
 ```json
 {
@@ -79,6 +77,7 @@ The following is an example for a metadata document:
 
 ```json
 {
+  "vct": "https://betelgeuse.example.com/identity_credential",
 	"name": "Betelgeuse Education Credential - Preliminary Version",
 	"description": "This is our development version of the education credential. Don't panic.",
 	"extends": "https://galaxy.example.com/galactic-education-credential-0.9",
@@ -175,7 +174,7 @@ The following is an example for a metadata document:
 
 # Retrieving Metadata {#RetrievingMetadata}
 
-## From the `vct` Claim
+## From a URL in the `vct` Claim {#VctClaim}
 
 In an SD-JWT VC, a URI in the `vct` claim can be used to express a type. If the
 type is a URL, metadata can be retrieved from the URL
@@ -188,7 +187,7 @@ object as defined in (#MetadataFormat).
 If the claim `vct#integrity` is present in the SD-JWT VC, its value
 `vct#integrity` MUST be an "integrity metadata" string as defined in Section (#Integrity).
 
-## From a Registry
+## From a Registry {#Registry}
 
 A consuming application MAY use a registry to retrieve metadata for a type,
 e.g., if the type is not a URL or if the consuming application does not have
@@ -198,11 +197,58 @@ application MUST trust the registry to provide correct metadata for the type.
 The registry MUST provide the metadata in the same format as described in
 (#MetadataFormat).
 
+## Using a Defined Retrieval Method {#DefinedRetrievalMethod}
+
+Ecosystems MAY define additional methods for retrieving metadata. For example, a
+standardization body or a community MAY define a service which has to be used to
+retrieve metadata based on a URN in the `vct` claim.
+
+## From a Local Cache {#LocalCache}
+
+A consuming application MAY cache metadata for a type. If a hash for integrity
+protection is present in the metadata as defined in (#Integrity), the consuming
+application MAY assume that the metadata is static and can be cached
+indefinitely. Otherwise, the consuming application MUST use the `Cache-Control`
+header of the HTTP response to determine how long the metadata can be cached.
+
+## From Type Metadata Glue Documents {#GlueDocuments}
+
+Credentials MAY encode type metadata directly, providing it as "glue
+information" to the consumer.
+
+For JSON-serialized JWS-based credentials, such type metadata documents MAY be
+included in the unprotected header of the JWS. In this case, the key `vctm` MUST
+be used in the unprotected header and its value MUST be an array of
+base64url-encoded Type Metadata documents as defined in this specification.
+Multiple documents MAY be included for providing a whole chain of types to the
+consuming application (see (#ExtendingMetadata)).
+
+A consuming application of a credential MAY use the documents in the `vctm`
+array instead of retrieving the respective metadata elsewhere as follows:
+
+ * When resolving a `vct` in a credential, the consuming application MUST ensure
+   that the `vct` claim in the credential matches the one in the metadata
+   document, and it MUST verify the integrity of the metadata document as
+   defined in (#Integrity). The consuming application MUST NOT use the metadata
+   if no hash for integrity protection was provided in `vct#integrity`.
+ * When resolving an `extends` property in a metadata document, the consuming
+   application MUST ensure that the value of the `extends` property in the
+   metadata document matches that of the `vct` in the metadata document, and it
+   MUST verify the integrity of the metadata document as defined in
+   (#Integrity). The consuming application MUST NOT use the metadata if no hash
+   for integrity protection was provided.
+
 # Document Integrity {#Integrity}
 
-Both the `vct` claim in the SD-JWT VC and various URIs/URLs in the metadata
-document can be accompanied by a respective claim suffixed with `#integrity`.
-Its value MUST be an "integrity metadata" string as defined in Section 3 of
+Both the `vct` claim in the SD-JWT VC and various URIs in the metadata
+document MAY be accompanied by a respective claim suffixed with `#integrity`, in particular:
+
+ * `vct`,
+ * `extends`,
+ * `schema_url`,
+ * `uri` in the `logo` property.
+
+The value MUST be an "integrity metadata" string as defined in Section 3 of
 [@!W3C.SRI]. A consuming application of the respective documents MUST verify the
 integrity of the retrieved document as defined in Section 3.3.5 of [@!W3C.SRI].
 
@@ -227,8 +273,6 @@ defined:
 - `schema_url`: A URL pointing to a JSON Schema document describing the
   structure of the credential as described in (#Schema). This property is
   OPTIONAL. MUST NOT be used if `schema` is present.
-- `schema_url#integrity`: An "integrity metadata" string as described in
-  (#Integrity). This property is OPTIONAL.
 
 # Extending Metadata {#ExtendingMetadata}
 
@@ -411,6 +455,25 @@ could lead to infinite recursion when retrieving and processing the metadata.
 Consuming applications MUST detect such circular dependencies and reject the
 credential.
 
+## Robust Retrieval of Metadata {#RobustRetrieval}
+
+In (#RetrievingMetadata), various methods for distributing and retrieving
+metadata are described. Methods relying on a network connection may fail due to
+network issues or unavailability of a network connection due to offline usage of
+credentials, temporary server outages, or denial of service attacks on the
+metadata server.
+
+Consuming applications SHOULD therefore implement a local cache as described in
+(#LocalCache) if possible. Such a cache MAY be populated with metadata before
+the credential is used.
+
+Issuers MAY provide glue documents as described in (#GlueDocuments) to provide
+metadata directly with the credential and avoid the need for network requests.
+
+These measures allow the consuming application to continue to function even if
+the metadata server is temporarily unavailable and avoid privacy issues as
+described in (#PrivacyPreservingRetrieval).
+
 # Privacy Considerations
 
 ## Undescribed Claims
@@ -420,6 +483,17 @@ also displayed to the user as appropriate for the use case. If there is no
 information about the claim in the `claims` section of the metadata, the Wallet
 MUST either fall back to show the user the 'raw' claim value or MUST NOT
 disclose the claim to the Verifier.
+
+## Privacy-Preserving Retrieval of Type Metadata {#PrivacyPreservingRetrieval}
+
+In (#RetrievingMetadata), various methods for distributing and retrieving
+metadata are described. For methods which rely on a network connection to a
+URL (e.g., provided by an Issuer), third parties (like the Issuer) may be able
+to track the usage of a credential by observing requests to the metadata URL.
+
+Consuming applications SHOULD prefer methods for retrieving metadata that do not
+leak information about the usage of a credential to third parties. The
+recommendations in (#RobustRetrieval) apply.
 
 {backmatter}
 
@@ -444,8 +518,10 @@ The authors would like to thank the following people for their contributions to
 this document and the discussions around it:
 Giuseppe De Marco,
 Paul Bastian,
+Alen Horvat,
 Oliver Terbu,
-Torsten Lodderstedt
+Torsten Lodderstedt,
+Kristina Yasuda
 
 
 # Document History
@@ -455,3 +531,7 @@ Individual draft
 -00
 
 * Initial version
+* Added three new retrieval methods to (#RetrievingMetadata)
+* Added security and privacy considerations
+* Added `vct` claim to (#Example)
+* Added Kristina and Alen to Acknowledgements
