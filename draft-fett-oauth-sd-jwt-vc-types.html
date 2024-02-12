@@ -9,20 +9,20 @@
 <meta content="
        This specification describes metadata for SD-JWT based Verifiable Credentials. 
     " name="description">
-<meta content="xml2rfc 3.19.1" name="generator">
+<meta content="xml2rfc 3.19.2" name="generator">
 <meta content="security" name="keyword">
 <meta content="oauth2" name="keyword">
 <meta content="sd-jwt" name="keyword">
 <meta content="draft-fett-oauth-sd-jwt-vc-types-latest" name="ietf.draft">
 <!-- Generator version information:
-  xml2rfc 3.19.1
+  xml2rfc 3.19.2
     Python 3.11.6
     ConfigArgParse 1.7
     google-i18n-address 3.1.0
     intervaltree 3.1.0
     Jinja2 3.1.2
     lxml 4.9.3
-    platformdirs 4.1.0
+    platformdirs 4.2.0
     pycountry 22.3.5
     PyYAML 6.0.1
     requests 2.31.0
@@ -1027,11 +1027,11 @@ svg :is([fill="white"], [fill^="#fff"]) {
 <thead><tr>
 <td class="left">Internet-Draft</td>
 <td class="center">SD-JWT VC Type Metadata</td>
-<td class="right">January 2024</td>
+<td class="right">February 2024</td>
 </tr></thead>
 <tfoot><tr>
 <td class="left">Fett</td>
-<td class="center">Expires 29 July 2024</td>
+<td class="center">Expires 15 August 2024</td>
 <td class="right">[Page]</td>
 </tr></tfoot>
 </table>
@@ -1044,12 +1044,12 @@ svg :is([fill="white"], [fill^="#fff"]) {
 <dd class="internet-draft">draft-fett-oauth-sd-jwt-vc-types-latest</dd>
 <dt class="label-published">Published:</dt>
 <dd class="published">
-<time datetime="2024-01-26" class="published">26 January 2024</time>
+<time datetime="2024-02-12" class="published">12 February 2024</time>
     </dd>
 <dt class="label-intended-status">Intended Status:</dt>
 <dd class="intended-status">Standards Track</dd>
 <dt class="label-expires">Expires:</dt>
-<dd class="expires"><time datetime="2024-07-29">29 July 2024</time></dd>
+<dd class="expires"><time datetime="2024-08-15">15 August 2024</time></dd>
 <dt class="label-authors">Author:</dt>
 <dd class="authors">
 <div class="author">
@@ -1094,7 +1094,7 @@ svg :is([fill="white"], [fill^="#fff"]) {
         time. It is inappropriate to use Internet-Drafts as reference
         material or to cite them other than as "work in progress."<a href="#section-boilerplate.1-3" class="pilcrow">¶</a></p>
 <p id="section-boilerplate.1-4">
-        This Internet-Draft will expire on 29 July 2024.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
+        This Internet-Draft will expire on 15 August 2024.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="copyright">
@@ -1133,10 +1133,19 @@ svg :is([fill="white"], [fill^="#fff"]) {
             <p id="section-toc.1-1.3.1"><a href="#section-3" class="auto internal xref">3</a>.  <a href="#name-retrieving-metadata" class="internal xref">Retrieving Metadata</a></p>
 <ul class="compact toc ulBare ulEmpty">
 <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.3.2.1">
-                <p id="section-toc.1-1.3.2.1.1" class="keepWithNext"><a href="#section-3.1" class="auto internal xref">3.1</a>.  <a href="#name-from-the-vct-claim" class="internal xref">From the <code>vct</code> Claim</a></p>
+                <p id="section-toc.1-1.3.2.1.1" class="keepWithNext"><a href="#section-3.1" class="auto internal xref">3.1</a>.  <a href="#name-from-a-url-in-the-vct-claim" class="internal xref">From a URL in the <code>vct</code> Claim</a></p>
 </li>
               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.3.2.2">
                 <p id="section-toc.1-1.3.2.2.1"><a href="#section-3.2" class="auto internal xref">3.2</a>.  <a href="#name-from-a-registry" class="internal xref">From a Registry</a></p>
+</li>
+              <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.3.2.3">
+                <p id="section-toc.1-1.3.2.3.1"><a href="#section-3.3" class="auto internal xref">3.3</a>.  <a href="#name-using-a-defined-retrieval-m" class="internal xref">Using a Defined Retrieval Method</a></p>
+</li>
+              <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.3.2.4">
+                <p id="section-toc.1-1.3.2.4.1"><a href="#section-3.4" class="auto internal xref">3.4</a>.  <a href="#name-from-a-local-cache" class="internal xref">From a Local Cache</a></p>
+</li>
+              <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.3.2.5">
+                <p id="section-toc.1-1.3.2.5.1"><a href="#section-3.5" class="auto internal xref">3.5</a>.  <a href="#name-from-type-metadata-glue-doc" class="internal xref">From Type Metadata Glue Documents</a></p>
 </li>
             </ul>
 </li>
@@ -1188,6 +1197,9 @@ svg :is([fill="white"], [fill^="#fff"]) {
 <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.10.2.1">
                 <p id="section-toc.1-1.10.2.1.1"><a href="#section-10.1" class="auto internal xref">10.1</a>.  <a href="#name-circular-extends-dependenci" class="internal xref">Circular "extends" Dependencies</a></p>
 </li>
+              <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.10.2.2">
+                <p id="section-toc.1-1.10.2.2.1"><a href="#section-10.2" class="auto internal xref">10.2</a>.  <a href="#name-robust-retrieval-of-metadat" class="internal xref">Robust Retrieval of Metadata</a></p>
+</li>
             </ul>
 </li>
           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.11">
@@ -1195,6 +1207,9 @@ svg :is([fill="white"], [fill^="#fff"]) {
 <ul class="compact toc ulBare ulEmpty">
 <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.11.2.1">
                 <p id="section-toc.1-1.11.2.1.1"><a href="#section-11.1" class="auto internal xref">11.1</a>.  <a href="#name-undescribed-claims" class="internal xref">Undescribed Claims</a></p>
+</li>
+              <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.11.2.2">
+                <p id="section-toc.1-1.11.2.2.1"><a href="#section-11.2" class="auto internal xref">11.2</a>.  <a href="#name-privacy-preserving-retrieva" class="internal xref">Privacy-Preserving Retrieval of Type Metadata</a></p>
 </li>
             </ul>
 </li>
@@ -1223,8 +1238,7 @@ svg :is([fill="white"], [fill^="#fff"]) {
 (for verifiable credential type). The <code>vct</code> value serves as an identifier for
 the type of the SD-JWT VC.<a href="#section-1-1" class="pilcrow">¶</a></p>
 <p id="section-1-2">A type is associated with rules defining which claims may or must appear in the
-Unsecured Payload of the SD-JWT VC and whether they may, must, or must not be
-selectively disclosable.<a href="#section-1-2" class="pilcrow">¶</a></p>
+SD-JWT VC and whether they may, must, or must not be selectively disclosable.<a href="#section-1-2" class="pilcrow">¶</a></p>
 <p id="section-1-3">This specification defines metadata that can be associated with a type as well
 as a method for retrieving the metadata and processing rules. This metadata is
 intended to be used, among other things, for the following purposes:<a href="#section-1-3" class="pilcrow">¶</a></p>
@@ -1248,14 +1262,13 @@ consistent with the Issuer's intent.<a href="#section-1-4.3" class="pilcrow">¶<
 following. This typically includes Issuers, Verifiers, and Wallets.<a href="#section-1-5" class="pilcrow">¶</a></p>
 </section>
 </div>
-<div id="example">
+<div id="Example">
 <section id="section-2">
       <h2 id="name-example">
 <a href="#section-2" class="section-number selfRef">2. </a><a href="#name-example" class="section-name selfRef">Example</a>
       </h2>
 <p id="section-2-1">All examples in this section are non-normative.<a href="#section-2-1" class="pilcrow">¶</a></p>
-<p id="section-2-2">In an SD-JWT VC, <code>vct</code> can be used to express a type. If the type is a URI,
-metadata can be retrieved as described in <a href="#RetrievingMetadata" class="auto internal xref">Section 3</a>.<a href="#section-2-2" class="pilcrow">¶</a></p>
+<p id="section-2-2">In an SD-JWT VC, <code>vct</code> can be used to express a type. Metadata can be retrieved as described in <a href="#RetrievingMetadata" class="auto internal xref">Section 3</a>.<a href="#section-2-2" class="pilcrow">¶</a></p>
 <div class="lang-json sourcecode" id="section-2-3">
 <pre>{
   "vct": "https://betelgeuse.example.com/identity_credential",
@@ -1271,6 +1284,7 @@ metadata is retrieved from the URL
 <p id="section-2-5">The following is an example for a metadata document:<a href="#section-2-5" class="pilcrow">¶</a></p>
 <div class="breakable lang-json sourcecode" id="section-2-6">
 <pre>{
+  "vct": "https://betelgeuse.example.com/identity_credential",
         "name": "Betelgeuse Education Credential - Preliminary Version",
         "description": "This is our development version of the education credential. Don't panic.",
         "extends": "https://galaxy.example.com/galactic-education-credential-0.9",
@@ -1373,10 +1387,10 @@ metadata is retrieved from the URL
       <h2 id="name-retrieving-metadata">
 <a href="#section-3" class="section-number selfRef">3. </a><a href="#name-retrieving-metadata" class="section-name selfRef">Retrieving Metadata</a>
       </h2>
-<div id="from-the-vct-claim">
+<div id="VctClaim">
 <section id="section-3.1">
-        <h3 id="name-from-the-vct-claim">
-<a href="#section-3.1" class="section-number selfRef">3.1. </a><a href="#name-from-the-vct-claim" class="section-name selfRef">From the <code>vct</code> Claim</a>
+        <h3 id="name-from-a-url-in-the-vct-claim">
+<a href="#section-3.1" class="section-number selfRef">3.1. </a><a href="#name-from-a-url-in-the-vct-claim" class="section-name selfRef">From a URL in the <code>vct</code> Claim</a>
         </h3>
 <p id="section-3.1-1">In an SD-JWT VC, a URI in the <code>vct</code> claim can be used to express a type. If the
 type is a URL, metadata can be retrieved from the URL
@@ -1388,7 +1402,7 @@ object as defined in <a href="#MetadataFormat" class="auto internal xref">Sectio
 <code>vct#integrity</code> MUST be an "integrity metadata" string as defined in Section <a href="#Integrity" class="auto internal xref">Section 4</a>.<a href="#section-3.1-3" class="pilcrow">¶</a></p>
 </section>
 </div>
-<div id="from-a-registry">
+<div id="Registry">
 <section id="section-3.2">
         <h3 id="name-from-a-registry">
 <a href="#section-3.2" class="section-number selfRef">3.2. </a><a href="#name-from-a-registry" class="section-name selfRef">From a Registry</a>
@@ -1401,6 +1415,60 @@ application MUST trust the registry to provide correct metadata for the type.<a 
 <a href="#MetadataFormat" class="auto internal xref">Section 5</a>.<a href="#section-3.2-2" class="pilcrow">¶</a></p>
 </section>
 </div>
+<div id="DefinedRetrievalMethod">
+<section id="section-3.3">
+        <h3 id="name-using-a-defined-retrieval-m">
+<a href="#section-3.3" class="section-number selfRef">3.3. </a><a href="#name-using-a-defined-retrieval-m" class="section-name selfRef">Using a Defined Retrieval Method</a>
+        </h3>
+<p id="section-3.3-1">Ecosystems MAY define additional methods for retrieving metadata. For example, a
+standardization body or a community MAY define a service which has to be used to
+retrieve metadata based on a URN in the <code>vct</code> claim.<a href="#section-3.3-1" class="pilcrow">¶</a></p>
+</section>
+</div>
+<div id="LocalCache">
+<section id="section-3.4">
+        <h3 id="name-from-a-local-cache">
+<a href="#section-3.4" class="section-number selfRef">3.4. </a><a href="#name-from-a-local-cache" class="section-name selfRef">From a Local Cache</a>
+        </h3>
+<p id="section-3.4-1">A consuming application MAY cache metadata for a type. If a hash for integrity
+protection is present in the metadata as defined in <a href="#Integrity" class="auto internal xref">Section 4</a>, the consuming
+application MAY assume that the metadata is static and can be cached
+indefinitely. Otherwise, the consuming application MUST use the <code>Cache-Control</code>
+header of the HTTP response to determine how long the metadata can be cached.<a href="#section-3.4-1" class="pilcrow">¶</a></p>
+</section>
+</div>
+<div id="GlueDocuments">
+<section id="section-3.5">
+        <h3 id="name-from-type-metadata-glue-doc">
+<a href="#section-3.5" class="section-number selfRef">3.5. </a><a href="#name-from-type-metadata-glue-doc" class="section-name selfRef">From Type Metadata Glue Documents</a>
+        </h3>
+<p id="section-3.5-1">Credentials MAY encode type metadata directly, providing it as "glue
+information" to the consumer.<a href="#section-3.5-1" class="pilcrow">¶</a></p>
+<p id="section-3.5-2">For JSON-serialized JWS-based credentials, such type metadata documents MAY be
+included in the unprotected header of the JWS. In this case, the key <code>vctm</code> MUST
+be used in the unprotected header and its value MUST be an array of
+base64url-encoded Type Metadata documents as defined in this specification.
+Multiple documents MAY be included for providing a whole chain of types to the
+consuming application (see <a href="#ExtendingMetadata" class="auto internal xref">Section 6</a>).<a href="#section-3.5-2" class="pilcrow">¶</a></p>
+<p id="section-3.5-3">A consuming application of a credential MAY use the documents in the <code>vctm</code>
+array instead of retrieving the respective metadata elsewhere as follows:<a href="#section-3.5-3" class="pilcrow">¶</a></p>
+<ul class="compact">
+<li class="compact" id="section-3.5-4.1">When resolving a <code>vct</code> in a credential, the consuming application MUST ensure
+that the <code>vct</code> claim in the credential matches the one in the metadata
+document, and it MUST verify the integrity of the metadata document as
+defined in <a href="#Integrity" class="auto internal xref">Section 4</a>. The consuming application MUST NOT use the metadata
+if no hash for integrity protection was provided in <code>vct#integrity</code>.<a href="#section-3.5-4.1" class="pilcrow">¶</a>
+</li>
+          <li class="compact" id="section-3.5-4.2">When resolving an <code>extends</code> property in a metadata document, the consuming
+application MUST ensure that the value of the <code>extends</code> property in the
+metadata document matches that of the <code>vct</code> in the metadata document, and it
+MUST verify the integrity of the metadata document as defined in
+<a href="#Integrity" class="auto internal xref">Section 4</a>. The consuming application MUST NOT use the metadata if no hash
+for integrity protection was provided.<a href="#section-3.5-4.2" class="pilcrow">¶</a>
+</li>
+        </ul>
+</section>
+</div>
 </section>
 </div>
 <div id="Integrity">
@@ -1408,11 +1476,25 @@ application MUST trust the registry to provide correct metadata for the type.<a 
       <h2 id="name-document-integrity">
 <a href="#section-4" class="section-number selfRef">4. </a><a href="#name-document-integrity" class="section-name selfRef">Document Integrity</a>
       </h2>
-<p id="section-4-1">Both the <code>vct</code> claim in the SD-JWT VC and various URIs/URLs in the metadata
-document can be accompanied by a respective claim suffixed with <code>#integrity</code>.
-Its value MUST be an "integrity metadata" string as defined in Section 3 of
+<p id="section-4-1">Both the <code>vct</code> claim in the SD-JWT VC and various URIs in the metadata
+document MAY be accompanied by a respective claim suffixed with <code>#integrity</code>, in particular:<a href="#section-4-1" class="pilcrow">¶</a></p>
+<ul class="compact">
+<li class="compact" id="section-4-2.1">
+          <code>vct</code>,<a href="#section-4-2.1" class="pilcrow">¶</a>
+</li>
+        <li class="compact" id="section-4-2.2">
+          <code>extends</code>,<a href="#section-4-2.2" class="pilcrow">¶</a>
+</li>
+        <li class="compact" id="section-4-2.3">
+          <code>schema_url</code>,<a href="#section-4-2.3" class="pilcrow">¶</a>
+</li>
+        <li class="compact" id="section-4-2.4">
+          <code>uri</code> in the <code>logo</code> property.<a href="#section-4-2.4" class="pilcrow">¶</a>
+</li>
+      </ul>
+<p id="section-4-3">The value MUST be an "integrity metadata" string as defined in Section 3 of
 <span>[<a href="#W3C.SRI" class="cite xref">W3C.SRI</a>]</span>. A consuming application of the respective documents MUST verify the
-integrity of the retrieved document as defined in Section 3.3.5 of <span>[<a href="#W3C.SRI" class="cite xref">W3C.SRI</a>]</span>.<a href="#section-4-1" class="pilcrow">¶</a></p>
+integrity of the retrieved document as defined in Section 3.3.5 of <span>[<a href="#W3C.SRI" class="cite xref">W3C.SRI</a>]</span>.<a href="#section-4-3" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="MetadataFormat">
@@ -1452,10 +1534,6 @@ used if <code>schema_url</code> is present.<a href="#section-5-2.6" class="pilcr
           <code>schema_url</code>: A URL pointing to a JSON Schema document describing the
 structure of the credential as described in <a href="#Schema" class="auto internal xref">Section 9</a>. This property is
 OPTIONAL. MUST NOT be used if <code>schema</code> is present.<a href="#section-5-2.7" class="pilcrow">¶</a>
-</li>
-        <li class="compact" id="section-5-2.8">
-          <code>schema_url#integrity</code>: An "integrity metadata" string as described in
-<a href="#Integrity" class="auto internal xref">Section 4</a>. This property is OPTIONAL.<a href="#section-5-2.8" class="pilcrow">¶</a>
 </li>
       </ul>
 </section>
@@ -1754,6 +1832,26 @@ could lead to infinite recursion when retrieving and processing the metadata.<a 
 credential.<a href="#section-10.1-2" class="pilcrow">¶</a></p>
 </section>
 </div>
+<div id="RobustRetrieval">
+<section id="section-10.2">
+        <h3 id="name-robust-retrieval-of-metadat">
+<a href="#section-10.2" class="section-number selfRef">10.2. </a><a href="#name-robust-retrieval-of-metadat" class="section-name selfRef">Robust Retrieval of Metadata</a>
+        </h3>
+<p id="section-10.2-1">In <a href="#RetrievingMetadata" class="auto internal xref">Section 3</a>, various methods for distributing and retrieving
+metadata are described. Methods relying on a network connection may fail due to
+network issues or unavailability of a network connection due to offline usage of
+credentials, temporary server outages, or denial of service attacks on the
+metadata server.<a href="#section-10.2-1" class="pilcrow">¶</a></p>
+<p id="section-10.2-2">Consuming applications SHOULD therefore implement a local cache as described in
+<a href="#LocalCache" class="auto internal xref">Section 3.4</a> if possible. Such a cache MAY be populated with metadata before
+the credential is used.<a href="#section-10.2-2" class="pilcrow">¶</a></p>
+<p id="section-10.2-3">Issuers MAY provide glue documents as described in <a href="#GlueDocuments" class="auto internal xref">Section 3.5</a> to provide
+metadata directly with the credential and avoid the need for network requests.<a href="#section-10.2-3" class="pilcrow">¶</a></p>
+<p id="section-10.2-4">These measures allow the consuming application to continue to function even if
+the metadata server is temporarily unavailable and avoid privacy issues as
+described in <a href="#PrivacyPreservingRetrieval" class="auto internal xref">Section 11.2</a>.<a href="#section-10.2-4" class="pilcrow">¶</a></p>
+</section>
+</div>
 </section>
 </div>
 <div id="privacy-considerations">
@@ -1771,6 +1869,20 @@ also displayed to the user as appropriate for the use case. If there is no
 information about the claim in the <code>claims</code> section of the metadata, the Wallet
 MUST either fall back to show the user the 'raw' claim value or MUST NOT
 disclose the claim to the Verifier.<a href="#section-11.1-1" class="pilcrow">¶</a></p>
+</section>
+</div>
+<div id="PrivacyPreservingRetrieval">
+<section id="section-11.2">
+        <h3 id="name-privacy-preserving-retrieva">
+<a href="#section-11.2" class="section-number selfRef">11.2. </a><a href="#name-privacy-preserving-retrieva" class="section-name selfRef">Privacy-Preserving Retrieval of Type Metadata</a>
+        </h3>
+<p id="section-11.2-1">In <a href="#RetrievingMetadata" class="auto internal xref">Section 3</a>, various methods for distributing and retrieving
+metadata are described. For methods which rely on a network connection to a
+URL (e.g., provided by an Issuer), third parties (like the Issuer) may be able
+to track the usage of a credential by observing requests to the metadata URL.<a href="#section-11.2-1" class="pilcrow">¶</a></p>
+<p id="section-11.2-2">Consuming applications SHOULD prefer methods for retrieving metadata that do not
+leak information about the usage of a credential to third parties. The
+recommendations in <a href="#RobustRetrieval" class="auto internal xref">Section 10.2</a> apply.<a href="#section-11.2-2" class="pilcrow">¶</a></p>
 </section>
 </div>
 </section>
@@ -1808,8 +1920,10 @@ disclose the claim to the Verifier.<a href="#section-11.1-1" class="pilcrow">¶<
 this document and the discussions around it:
 Giuseppe De Marco,
 Paul Bastian,
+Alen Horvat,
 Oliver Terbu,
-Torsten Lodderstedt<a href="#appendix-A-2" class="pilcrow">¶</a></p>
+Torsten Lodderstedt,
+Kristina Yasuda<a href="#appendix-A-2" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="document-history">
@@ -1821,6 +1935,14 @@ Torsten Lodderstedt<a href="#appendix-A-2" class="pilcrow">¶</a></p>
 <p id="appendix-B-2">-00<a href="#appendix-B-2" class="pilcrow">¶</a></p>
 <ul class="compact">
 <li class="compact" id="appendix-B-3.1">Initial version<a href="#appendix-B-3.1" class="pilcrow">¶</a>
+</li>
+        <li class="compact" id="appendix-B-3.2">Added three new retrieval methods to <a href="#RetrievingMetadata" class="auto internal xref">Section 3</a><a href="#appendix-B-3.2" class="pilcrow">¶</a>
+</li>
+        <li class="compact" id="appendix-B-3.3">Added security and privacy considerations<a href="#appendix-B-3.3" class="pilcrow">¶</a>
+</li>
+        <li class="compact" id="appendix-B-3.4">Added <code>vct</code> claim to <a href="#Example" class="auto internal xref">Section 2</a><a href="#appendix-B-3.4" class="pilcrow">¶</a>
+</li>
+        <li class="compact" id="appendix-B-3.5">Added Kristina and Alen to Acknowledgements<a href="#appendix-B-3.5" class="pilcrow">¶</a>
 </li>
       </ul>
 </section>
