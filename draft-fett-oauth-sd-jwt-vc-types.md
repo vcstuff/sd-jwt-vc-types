@@ -63,112 +63,137 @@ In an SD-JWT VC, `vct` can be used to express a type. Metadata can be retrieved 
 
 ```json
 {
-  "vct": "https://betelgeuse.example.com/identity_credential",
+  "vct": "https://betelgeuse.example.com/education_credential",
   "vct#integrity": "sha256-WRL5ca_xGgX3c1VLmXfh-9cLlJNXN-TsMk-PmKjZ5t0",
   ...
 }
 ```
 
-Here, the type is `https://betelgeuse.example.com/identity_credential`. The
+Here, the type is `https://betelgeuse.example.com/education_credential`. The
 metadata is retrieved from the URL
-`https://betelgeuse.example.com/.well-known/vct/identity_credential`.
+`https://betelgeuse.example.com/.well-known/vct/education_credential`.
 
 The following is an example for a metadata document:
 
 ```json
 {
-  "vct": "https://betelgeuse.example.com/identity_credential",
-	"name": "Betelgeuse Education Credential - Preliminary Version",
-	"description": "This is our development version of the education credential. Don't panic.",
-	"extends": "https://galaxy.example.com/galactic-education-credential-0.9",
-	"display": [
-		{
-			"en-US": {
-				"name": "University Credential",
-                "rendering": {
-                    "simple": {
-                        "logo": {
-                            "uri": "https://exampleuniversity.com/public/logo.png",
-                            "uri#integrity": "sha256-LmXfh-9cLlJNXN-TsMk-PmKjZ5t0WRL5ca_xGgX3c1V",
-                            "alt_text": "a square logo of a university"
-                        },
-                        "background_color": "#12107c",
-                        "text_color": "#FFFFFF",
-                    },
-                    "svg_templates": [
-                        {
-                            "uri": "https://exampleuniversity.com/public/credential-english.svg",
-                            "uri#integrity": "sha256-8cLlJNXN-TsMk-PmKjZ5t0WRL5ca_xGgX3c1VLmXfh-9c",
-                            "properties": {
-                                "orientation": "landscape",
-                                "color_scheme": "light",
-                                "contrast": "high",
-                            }
-                        }
-                    ]
-                }
-			}
-		}
-	],
-	"claims":{
-        "/name": {
-            "display": {
-                "de-DE": {
-                    "label": "Vor- und Nachname",
-                    "description": "Der Name des Studenten"
-                },
-                "en-US": {
-                    "label": "Name",
-                    "description": "The name of the student"
-                }
+  "vct":"https://betelgeuse.example.com/education_credential",
+  "name":"Betelgeuse Education Credential - Preliminary Version",
+  "description":"This is our development version of the education credential. Don't panic.",
+  "extends":"https://galaxy.example.com/galactic-education-credential-0.9",
+  "extends#integrity":"sha256-9cLlJNXN-TsMk-PmKjZ5t0WRL5ca_xGgX3c1VLmXfh-WRL5",
+  "display":[
+    {
+      "en-US":{
+        "name":"Betelgeuse Education Credential",
+        "rendering":{
+          "simple":{
+            "logo":{
+              "uri":"https://betelgeuse.example.com/public/education-logo.png",
+              "uri#integrity":"sha256-LmXfh-9cLlJNXN-TsMk-PmKjZ5t0WRL5ca_xGgX3c1V",
+              "alt_text":"a square logo of a university"
             },
-            "verification": "verified",
-            "sd": "allowed"
-        },
-        "/degree": {
-            "display": {
-                "de-DE": {
-                    "label": "Abschluss",
-                    "description": "Der Abschluss des Studenten"
-                },
-                "en-US": {
-                    "label": "Degree",
-                    "description": "Degree earned by the student"
-                }
-            },
-            "verification": "authoritative",
-            "sd": "allowed"
-        },
-        "/address": {
-            "display": {
-                "de-DE": {
-                    "label": "Adresse",
-                    "description": "Adresse zum Zeitpunkt des Abschlusses"
-                },
-                "en-US": {
-                    "label": "Address",
-                    "description": "Address at the time of graduation"
-                }
-            },
-            "verification": "self-attested",
-            "sd": "always"
-        },
-        "/address/street_address": {
-            "display": {
-                "de-DE": {
-                    "label": "Straße"
-                },
-                "en-US": {
-                    "label": "Street Address"
-                }
-            },
-            "verification": "self-attested",
-            "sd": "always"
+            "background_color":"#12107c",
+            "text_color":"#FFFFFF"
+          },
+          "svg_templates":[
+            {
+              "uri":"https://betelgeuse.example.com/public/credential-english.svg",
+              "uri#integrity":"sha256-8cLlJNXN-TsMk-PmKjZ5t0WRL5ca_xGgX3c1VLmXfh-9c",
+              "properties":{
+                "orientation":"landscape",
+                "color_scheme":"light",
+                "contrast":"high"
+              }
+            }
+          ]
         }
+      },
+      "de-DE":{
+        "name":"Betelgeuse-Bildungsnachweis",
+        "rendering":{
+          "simple":{
+            "logo":{
+              "uri":"https://betelgeuse.example.com/public/education-logo-de.png",
+              "uri#integrity":"sha256-LmXfh-9cLlJNXN-TsMk-PmKjZ5t0WRL5ca_xGgX3c1V",
+              "alt_text":"Quadratisches Logo einer Universität"
+            },
+            "background_color":"#12107c",
+            "text_color":"#FFFFFF"
+          },
+          "svg_templates":[
+            {
+              "uri":"https://betelgeuse.example.com/public/credential-german.svg",
+              "uri#integrity":"sha256-8cLlJNXN-TsMk-PmKjZ5t0WRL5ca_xGgX3c1VLmXfh-9c",
+              "properties":{
+                "orientation":"landscape",
+                "color_scheme":"light",
+                "contrast":"high"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "claims":{
+    "/name":{
+      "display":{
+        "de-DE":{
+          "label":"Vor- und Nachname",
+          "description":"Der Name des Studenten"
+        },
+        "en-US":{
+          "label":"Name",
+          "description":"The name of the student"
+        }
+      },
+      "verification":"verified",
+      "sd":"allowed"
     },
-
-    "schema_url": "https://exampleuniversity.com/public/credential-schema-0.9",
-    "schema_url#integrity": "sha256-o984vn819a48ui1llkwPmKjZ5t0WRL5ca_xGgX3c1VLmXfh"
+    "/degree":{
+      "display":{
+        "de-DE":{
+          "label":"Abschluss",
+          "description":"Der Abschluss des Studenten"
+        },
+        "en-US":{
+          "label":"Degree",
+          "description":"Degree earned by the student"
+        }
+      },
+      "verification":"authoritative",
+      "sd":"allowed"
+    },
+    "/address":{
+      "display":{
+        "de-DE":{
+          "label":"Adresse",
+          "description":"Adresse zum Zeitpunkt des Abschlusses"
+        },
+        "en-US":{
+          "label":"Address",
+          "description":"Address at the time of graduation"
+        }
+      },
+      "verification":"self-attested",
+      "sd":"always"
+    },
+    "/address/street_address":{
+      "display":{
+        "de-DE":{
+          "label":"Straße"
+        },
+        "en-US":{
+          "label":"Street Address"
+        }
+      },
+      "verification":"self-attested",
+      "sd":"always"
+    }
+  },
+  "schema_url":"https://exampleuniversity.com/public/credential-schema-0.9",
+  "schema_url#integrity":"sha256-o984vn819a48ui1llkwPmKjZ5t0WRL5ca_xGgX3c1VLmXfh"
 }
 ```
 
