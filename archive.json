@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2024-02-11T01:16:10.965905+00:00",
+  "timestamp": "2024-02-13T01:11:36.293622+00:00",
   "repo": "vcstuff/sd-jwt-vc-types",
   "labels": [
     {
@@ -49,6 +49,23 @@
       "color": "ffffff"
     }
   ],
-  "issues": [],
+  "issues": [
+    {
+      "number": 1,
+      "id": "I_kwDOLJkIfM5-9YU_",
+      "title": "Option to provide only schema-url?",
+      "url": "https://github.com/vcstuff/sd-jwt-vc-types/issues/1",
+      "state": "OPEN",
+      "author": "c2bo",
+      "authorAssociation": "NONE",
+      "assignees": [],
+      "labels": [],
+      "body": "I just finished my first read of the draft and it feels like the overall concept makes a lot of sense as a general approach for credential type metadata! The main thing I was wondering about when reading the draft was if this is really necessary for every credential or if sometimes only providing some kind of schema information would be sufficient.\r\n\r\nDo you think it makes sense to also allow an option where the `vct` claim directly references a schema (perhaps including the integrity information)? This could be a lightweight version where the credential issuer will not provide additional metadata but wants to convey at least the schema (most likely an external URL). ",
+      "createdAt": "2024-02-12T12:17:46Z",
+      "updatedAt": "2024-02-12T12:17:46Z",
+      "closedAt": null,
+      "comments": []
+    }
+  ],
   "pulls": []
 }
