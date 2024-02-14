@@ -136,8 +136,9 @@ The following is an example for a metadata document:
       }
     }
   ],
-  "claims":{
-    "/name":{
+  "claims":[
+    {
+      "path":["name"],
       "display":{
         "de-DE":{
           "label":"Vor- und Nachname",
@@ -151,21 +152,8 @@ The following is an example for a metadata document:
       "verification":"verified",
       "sd":"allowed"
     },
-    "/degree":{
-      "display":{
-        "de-DE":{
-          "label":"Abschluss",
-          "description":"Der Abschluss des Studenten"
-        },
-        "en-US":{
-          "label":"Degree",
-          "description":"Degree earned by the student"
-        }
-      },
-      "verification":"authoritative",
-      "sd":"allowed"
-    },
-    "/address":{
+    {
+      "path":["address"],
       "display":{
         "de-DE":{
           "label":"Adresse",
@@ -179,7 +167,8 @@ The following is an example for a metadata document:
       "verification":"self-attested",
       "sd":"always"
     },
-    "/address/street_address":{
+    {
+      "path":["address", "street_address"],
       "display":{
         "de-DE":{
           "label":"Straße"
@@ -190,8 +179,23 @@ The following is an example for a metadata document:
       },
       "verification":"self-attested",
       "sd":"always"
+    },
+    {
+      "path":["degrees", null],
+      "display":{
+        "de-DE":{
+          "label":"Abschluss",
+          "description":"Der Abschluss des Studenten"
+        },
+        "en-US":{
+          "label":"Degree",
+          "description":"Degree earned by the student"
+        }
+      },
+      "verification":"authoritative",
+      "sd":"allowed"
     }
-  },
+  ],
   "schema_url":"https://exampleuniversity.com/public/credential-schema-0.9",
   "schema_url#integrity":"sha256-o984vn819a48ui1llkwPmKjZ5t0WRL5ca_xGgX3c1VLmXfh"
 }
@@ -402,14 +406,14 @@ MUST contain at least one of the following properties:
 
 # Claim Metadata {#ClaimMetadata}
 
-The `claims` property is an object containing information about particular claims
-for displaying and validating the claims.
+The `claims` property is an array of objects containing information about
+particular claims for displaying and validating the claims.
 
-The object MAY contain a property for each claim that is supported by the type.
-The property name MUST be a JSON Pointer [@!RFC6901] pointing to the claim in the
-credential. The property value MUST be an object containing the following
-properties:
+The object MAY contain an object for each claim that is supported by the type.
+The property value MUST be an object containing the following properties:
 
+- `path`: An array indicating the claim or claims that are being addressed, as
+  described below. This property is REQUIRED.
 - `display`: An object containing display information for the claim, as
   described in (#ClaimDisplayMetadata). This property is OPTIONAL.
 - `verification`: A string indicating how the claim is verified, as described in
@@ -417,10 +421,76 @@ properties:
 - `sd`: A string indicating whether the claim is selectively disclosable, as
   described in (#ClaimSelectiveDisclosureMetadata). This property is OPTIONAL.
 
-Note: The JSON Pointer MUST point to the respective claim as if all selectively
-disclosable claims were disclosed to the Verifier. That means that a consuming
-application which does not have access to all disclosures may not be able to
-validate the claim.
+## Claim Path {#ClaimPath}
+
+The `path` property MUST be a non-empty array of strings, `null` values, or
+non-negative integers. It is used to select a particular claim in the credential
+or a set of claims. A string indicates that the respective key is to be
+selected, a `null` value indicates that all elements of the currently selected
+array(s) are to be selected, and a non-negative integer indicates that the
+respective index in an array is to be selected.
+
+The following shows a non-normative, simplified example of a credential:
+
+```json
+{
+  "name": "Arthur Dent",
+  "address": {
+    "street_address": "42 Market Street",
+    "city": "Milliways",
+    "postal_code": "12345"
+  },
+  "degrees": [
+    {
+      "type": "Bachelor of Science",
+      "university": "University of Betelgeuse"
+    },
+    {
+      "type": "Master of Science",
+      "university": "University of Betelgeuse"
+    }
+  ],
+  "nationalities": ["British", "Betelgeusian"]
+}
+```
+
+The following shows examples of `path` values and the respective selected
+claims:
+
+- `["name"]`: The claim `name` with the value `Arthur Dent` is selected.
+- `["address", "street_address"]`: The claim `street_address` with the value
+  `42 Market Street` is selected.
+- `["degrees", null, "type"]`: All `type` claims in the `degrees` array are
+  selected.
+- `["nationalities", 1]`: The second nationality is selected.
+
+In detail, the array is processed from left to right as follows:
+
+ 1. Select the root element of the credential, i.e., the top-level JSON object.
+ 2. Process the `path` components from left to right:
+    1. If the `path` component is a string, select the element in the respective
+       key in the currently selected element(s). If any of the currently
+       selected element(s) is not an object, abort processing and return an
+       error. If the key does not exist in any element currently selected,
+       remove that element from the selection.
+    2. If the `path` component is `null`, select all elements of the currently
+       selected array(s). If any of the currently selected element(s) is not an
+       array, abort processing and return an error.
+    3. If the `path` component is a non-negative integer, select the element at
+       the respective index in the currently selected array(s). If any of the
+       currently selected element(s) is not an array, abort processing and
+       return an error. If the index does not exist in a selected array, remove
+       that array from the selection.
+  3. If the set of elements currently selected is empty, abort processing and
+     return an error.
+
+The result of the processing is the set of elements to which the respective
+claim metadata applies.
+
+Note: The `path` property MUST point to the respective claim as if all
+selectively disclosable claims were disclosed to a Verifier. That means that a
+consuming application which does not have access to all disclosures may not be
+able to identify the claim which is being addressed.
 
 ## Claim Display Metadata {#ClaimDisplayMetadata}
 
