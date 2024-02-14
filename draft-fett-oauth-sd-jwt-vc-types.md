@@ -91,7 +91,7 @@ The following is an example for a metadata document:
             "logo":{
               "uri":"https://betelgeuse.example.com/public/education-logo.png",
               "uri#integrity":"sha256-LmXfh-9cLlJNXN-TsMk-PmKjZ5t0WRL5ca_xGgX3c1V",
-              "alt_text":"a square logo of a university"
+              "alt_text":"Betelgeuse Ministry of Education logo"
             },
             "background_color":"#12107c",
             "text_color":"#FFFFFF"
