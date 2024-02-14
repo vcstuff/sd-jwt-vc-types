@@ -1031,7 +1031,7 @@ svg :is([fill="white"], [fill^="#fff"]) {
 </tr></thead>
 <tfoot><tr>
 <td class="left">Fett</td>
-<td class="center">Expires 15 August 2024</td>
+<td class="center">Expires 17 August 2024</td>
 <td class="right">[Page]</td>
 </tr></tfoot>
 </table>
@@ -1044,12 +1044,12 @@ svg :is([fill="white"], [fill^="#fff"]) {
 <dd class="internet-draft">draft-fett-oauth-sd-jwt-vc-types-latest</dd>
 <dt class="label-published">Published:</dt>
 <dd class="published">
-<time datetime="2024-02-12" class="published">12 February 2024</time>
+<time datetime="2024-02-14" class="published">14 February 2024</time>
     </dd>
 <dt class="label-intended-status">Intended Status:</dt>
 <dd class="intended-status">Standards Track</dd>
 <dt class="label-expires">Expires:</dt>
-<dd class="expires"><time datetime="2024-08-15">15 August 2024</time></dd>
+<dd class="expires"><time datetime="2024-08-17">17 August 2024</time></dd>
 <dt class="label-authors">Author:</dt>
 <dd class="authors">
 <div class="author">
@@ -1094,7 +1094,7 @@ svg :is([fill="white"], [fill^="#fff"]) {
         time. It is inappropriate to use Internet-Drafts as reference
         material or to cite them other than as "work in progress."<a href="#section-boilerplate.1-3" class="pilcrow">¶</a></p>
 <p id="section-boilerplate.1-4">
-        This Internet-Draft will expire on 15 August 2024.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
+        This Internet-Draft will expire on 17 August 2024.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="copyright">
@@ -1271,111 +1271,136 @@ following. This typically includes Issuers, Verifiers, and Wallets.<a href="#sec
 <p id="section-2-2">In an SD-JWT VC, <code>vct</code> can be used to express a type. Metadata can be retrieved as described in <a href="#RetrievingMetadata" class="auto internal xref">Section 3</a>.<a href="#section-2-2" class="pilcrow">¶</a></p>
 <div class="lang-json sourcecode" id="section-2-3">
 <pre>{
-  "vct": "https://betelgeuse.example.com/identity_credential",
+  "vct": "https://betelgeuse.example.com/education_credential",
   "vct#integrity": "sha256-WRL5ca_xGgX3c1VLmXfh-9cLlJNXN-TsMk-PmKjZ5t0",
   ...
 }
 
 </pre><a href="#section-2-3" class="pilcrow">¶</a>
 </div>
-<p id="section-2-4">Here, the type is <code>https://betelgeuse.example.com/identity_credential</code>. The
+<p id="section-2-4">Here, the type is <code>https://betelgeuse.example.com/education_credential</code>. The
 metadata is retrieved from the URL
-<code>https://betelgeuse.example.com/.well-known/vct/identity_credential</code>.<a href="#section-2-4" class="pilcrow">¶</a></p>
+<code>https://betelgeuse.example.com/.well-known/vct/education_credential</code>.<a href="#section-2-4" class="pilcrow">¶</a></p>
 <p id="section-2-5">The following is an example for a metadata document:<a href="#section-2-5" class="pilcrow">¶</a></p>
 <div class="breakable lang-json sourcecode" id="section-2-6">
 <pre>{
-  "vct": "https://betelgeuse.example.com/identity_credential",
-        "name": "Betelgeuse Education Credential - Preliminary Version",
-        "description": "This is our development version of the education credential. Don't panic.",
-        "extends": "https://galaxy.example.com/galactic-education-credential-0.9",
-        "display": [
-                {
-                        "en-US": {
-                                "name": "University Credential",
-                "rendering": {
-                    "simple": {
-                        "logo": {
-                            "uri": "https://exampleuniversity.com/public/logo.png",
-                            "uri#integrity": "sha256-LmXfh-9cLlJNXN-TsMk-PmKjZ5t0WRL5ca_xGgX3c1V",
-                            "alt_text": "a square logo of a university"
-                        },
-                        "background_color": "#12107c",
-                        "text_color": "#FFFFFF",
-                    },
-                    "svg_templates": [
-                        {
-                            "uri": "https://exampleuniversity.com/public/credential-english.svg",
-                            "uri#integrity": "sha256-8cLlJNXN-TsMk-PmKjZ5t0WRL5ca_xGgX3c1VLmXfh-9c",
-                            "properties": {
-                                "orientation": "landscape",
-                                "color_scheme": "light",
-                                "contrast": "high",
-                            }
-                        }
-                    ]
-                }
-                        }
-                }
-        ],
-        "claims":{
-        "/name": {
-            "display": {
-                "de-DE": {
-                    "label": "Vor- und Nachname",
-                    "description": "Der Name des Studenten"
-                },
-                "en-US": {
-                    "label": "Name",
-                    "description": "The name of the student"
-                }
+  "vct":"https://betelgeuse.example.com/education_credential",
+  "name":"Betelgeuse Education Credential - Preliminary Version",
+  "description":"This is our development version of the education credential. Don't panic.",
+  "extends":"https://galaxy.example.com/galactic-education-credential-0.9",
+  "extends#integrity":"sha256-9cLlJNXN-TsMk-PmKjZ5t0WRL5ca_xGgX3c1VLmXfh-WRL5",
+  "display":[
+    {
+      "en-US":{
+        "name":"Betelgeuse Education Credential",
+        "rendering":{
+          "simple":{
+            "logo":{
+              "uri":"https://betelgeuse.example.com/public/education-logo.png",
+              "uri#integrity":"sha256-LmXfh-9cLlJNXN-TsMk-PmKjZ5t0WRL5ca_xGgX3c1V",
+              "alt_text":"Betelgeuse Ministry of Education logo"
             },
-            "verification": "verified",
-            "sd": "allowed"
-        },
-        "/degree": {
-            "display": {
-                "de-DE": {
-                    "label": "Abschluss",
-                    "description": "Der Abschluss des Studenten"
-                },
-                "en-US": {
-                    "label": "Degree",
-                    "description": "Degree earned by the student"
-                }
-            },
-            "verification": "authoritative",
-            "sd": "allowed"
-        },
-        "/address": {
-            "display": {
-                "de-DE": {
-                    "label": "Adresse",
-                    "description": "Adresse zum Zeitpunkt des Abschlusses"
-                },
-                "en-US": {
-                    "label": "Address",
-                    "description": "Address at the time of graduation"
-                }
-            },
-            "verification": "self-attested",
-            "sd": "always"
-        },
-        "/address/street_address": {
-            "display": {
-                "de-DE": {
-                    "label": "Straße"
-                },
-                "en-US": {
-                    "label": "Street Address"
-                }
-            },
-            "verification": "self-attested",
-            "sd": "always"
+            "background_color":"#12107c",
+            "text_color":"#FFFFFF"
+          },
+          "svg_templates":[
+            {
+              "uri":"https://betelgeuse.example.com/public/credential-english.svg",
+              "uri#integrity":"sha256-8cLlJNXN-TsMk-PmKjZ5t0WRL5ca_xGgX3c1VLmXfh-9c",
+              "properties":{
+                "orientation":"landscape",
+                "color_scheme":"light",
+                "contrast":"high"
+              }
+            }
+          ]
         }
+      },
+      "de-DE":{
+        "name":"Betelgeuse-Bildungsnachweis",
+        "rendering":{
+          "simple":{
+            "logo":{
+              "uri":"https://betelgeuse.example.com/public/education-logo-de.png",
+              "uri#integrity":"sha256-LmXfh-9cLlJNXN-TsMk-PmKjZ5t0WRL5ca_xGgX3c1V",
+              "alt_text":"Logo des Betelgeusischen Bildungsministeriums"
+            },
+            "background_color":"#12107c",
+            "text_color":"#FFFFFF"
+          },
+          "svg_templates":[
+            {
+              "uri":"https://betelgeuse.example.com/public/credential-german.svg",
+              "uri#integrity":"sha256-8cLlJNXN-TsMk-PmKjZ5t0WRL5ca_xGgX3c1VLmXfh-9c",
+              "properties":{
+                "orientation":"landscape",
+                "color_scheme":"light",
+                "contrast":"high"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "claims":{
+    "/name":{
+      "display":{
+        "de-DE":{
+          "label":"Vor- und Nachname",
+          "description":"Der Name des Studenten"
+        },
+        "en-US":{
+          "label":"Name",
+          "description":"The name of the student"
+        }
+      },
+      "verification":"verified",
+      "sd":"allowed"
     },
-
-    "schema_url": "https://exampleuniversity.com/public/credential-schema-0.9",
-    "schema_url#integrity": "sha256-o984vn819a48ui1llkwPmKjZ5t0WRL5ca_xGgX3c1VLmXfh"
+    "/degree":{
+      "display":{
+        "de-DE":{
+          "label":"Abschluss",
+          "description":"Der Abschluss des Studenten"
+        },
+        "en-US":{
+          "label":"Degree",
+          "description":"Degree earned by the student"
+        }
+      },
+      "verification":"authoritative",
+      "sd":"allowed"
+    },
+    "/address":{
+      "display":{
+        "de-DE":{
+          "label":"Adresse",
+          "description":"Adresse zum Zeitpunkt des Abschlusses"
+        },
+        "en-US":{
+          "label":"Address",
+          "description":"Address at the time of graduation"
+        }
+      },
+      "verification":"self-attested",
+      "sd":"always"
+    },
+    "/address/street_address":{
+      "display":{
+        "de-DE":{
+          "label":"Straße"
+        },
+        "en-US":{
+          "label":"Street Address"
+        }
+      },
+      "verification":"self-attested",
+      "sd":"always"
+    }
+  },
+  "schema_url":"https://exampleuniversity.com/public/credential-schema-0.9",
+  "schema_url#integrity":"sha256-o984vn819a48ui1llkwPmKjZ5t0WRL5ca_xGgX3c1VLmXfh"
 }
 
 </pre><a href="#section-2-6" class="pilcrow">¶</a>
