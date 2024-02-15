@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2024-02-13T01:11:36.293622+00:00",
+  "timestamp": "2024-02-15T01:11:16.321900+00:00",
   "repo": "vcstuff/sd-jwt-vc-types",
   "labels": [
     {
@@ -55,17 +55,190 @@
       "id": "I_kwDOLJkIfM5-9YU_",
       "title": "Option to provide only schema-url?",
       "url": "https://github.com/vcstuff/sd-jwt-vc-types/issues/1",
-      "state": "OPEN",
+      "state": "CLOSED",
       "author": "c2bo",
       "authorAssociation": "NONE",
       "assignees": [],
       "labels": [],
       "body": "I just finished my first read of the draft and it feels like the overall concept makes a lot of sense as a general approach for credential type metadata! The main thing I was wondering about when reading the draft was if this is really necessary for every credential or if sometimes only providing some kind of schema information would be sufficient.\r\n\r\nDo you think it makes sense to also allow an option where the `vct` claim directly references a schema (perhaps including the integrity information)? This could be a lightweight version where the credential issuer will not provide additional metadata but wants to convey at least the schema (most likely an external URL). ",
       "createdAt": "2024-02-12T12:17:46Z",
-      "updatedAt": "2024-02-12T12:17:46Z",
+      "updatedAt": "2024-02-14T13:12:52Z",
+      "closedAt": "2024-02-14T13:12:52Z",
+      "comments": [
+        {
+          "author": "danielfett",
+          "authorAssociation": "COLLABORATOR",
+          "body": "Just for clarification, by schema you mean the JSON schema? ",
+          "createdAt": "2024-02-13T09:39:00Z",
+          "updatedAt": "2024-02-13T09:39:00Z"
+        },
+        {
+          "author": "c2bo",
+          "authorAssociation": "NONE",
+          "body": "> Just for clarification, by schema you mean the JSON schema?\r\n\r\nYes. I am wondering if we always need/want the full metadata or if sometimes just a JSON schema reference would be fine. Basically a subset of information that does not require some kind of .well-known ressource.",
+          "createdAt": "2024-02-13T16:38:03Z",
+          "updatedAt": "2024-02-13T16:38:03Z"
+        },
+        {
+          "author": "c2bo",
+          "authorAssociation": "NONE",
+          "body": "I am just reading the new updated version and I guess this would be mostly solved by the new Glue section --> I think we can close this.",
+          "createdAt": "2024-02-13T18:21:58Z",
+          "updatedAt": "2024-02-13T18:21:58Z"
+        },
+        {
+          "author": "danielfett",
+          "authorAssociation": "COLLABORATOR",
+          "body": "Thank you!",
+          "createdAt": "2024-02-14T13:12:52Z",
+          "updatedAt": "2024-02-14T13:12:52Z"
+        }
+      ]
+    },
+    {
+      "number": 2,
+      "id": "I_kwDOLJkIfM5_EUOb",
+      "title": "Improvements to example",
+      "url": "https://github.com/vcstuff/sd-jwt-vc-types/issues/2",
+      "state": "CLOSED",
+      "author": "jogu",
+      "authorAssociation": "CONTRIBUTOR",
+      "assignees": [],
+      "labels": [],
+      "body": "A couple of things I spotted about the example:\r\n\r\n1. I think it's defining a credential for all Betelgeuse universities, but the example logo implies it's only for a single university: \"https://exampleuniversity.com/public/logo.png\" - \"https://betelgeuse.example.com/education-logo.png\" might be better\r\n2. There isn't a logo defined for de-DE, which seems inconsistent with Section 7 (\"Display Metadata\") as there are claim display names defined for de-DE: \"The object MUST contain a property for each language that is supported by the type\"\r\n3. The vct of \"https://betelgeuse.example.com/identity_credential\" - I'm not sure 'identity_credential' is a good description for the contents, maybe \"https://betelgeuse.example.com/degree_credential\" is better (I think it's not an identity credential with an optional degree, because if it was the name would be authoritative and it would probably allow multiple degrees to be listed)\r\n4. The formatting is a bit messed up in the rendered example in general as there's a mixture of spaces/tabs\r\n",
+      "createdAt": "2024-02-13T09:11:25Z",
+      "updatedAt": "2024-02-14T13:10:04Z",
+      "closedAt": "2024-02-14T13:10:04Z",
+      "comments": [
+        {
+          "author": "danielfett",
+          "authorAssociation": "COLLABORATOR",
+          "body": "Thanks! https://github.com/vcstuff/sd-jwt-vc-types/pull/3",
+          "createdAt": "2024-02-13T09:38:01Z",
+          "updatedAt": "2024-02-13T09:38:01Z"
+        }
+      ]
+    },
+    {
+      "number": 4,
+      "id": "I_kwDOLJkIfM5_JTXB",
+      "title": "Potentially illegal configurations",
+      "url": "https://github.com/vcstuff/sd-jwt-vc-types/issues/4",
+      "state": "OPEN",
+      "author": "jogu",
+      "authorAssociation": "CONTRIBUTOR",
+      "assignees": [],
+      "labels": [],
+      "body": "I think some configurations should be illegal but I'm not sure the spec says that today. An example would be an 'address' object that is marked authoritative, but also has a field within it that's marked as self-attested, i.e.\r\n\r\n```\r\n \"claims\":{\r\n    \"/address\":{\r\n      \"display\":{\r\n        \"en-US\":{\r\n          \"label\":\"Address\",\r\n          \"description\":\"Address at the time of graduation\"\r\n        }\r\n      },\r\n      \"verification\":\"authoritative\",\r\n      \"sd\":\"always\"\r\n    },\r\n    \"/address/street_address\":{\r\n      \"display\":{\r\n        \"en-US\":{\r\n          \"label\":\"Street Address\"\r\n        }\r\n      },\r\n      \"verification\":\"self-attested\",\r\n      \"sd\":\"always\"\r\n    }\r\n```\r\n\r\nI think that probably shouldn't be allowed, it feels difficult to verifiers to reason about.",
+      "createdAt": "2024-02-13T21:20:20Z",
+      "updatedAt": "2024-02-13T21:20:20Z",
       "closedAt": null,
       "comments": []
     }
   ],
-  "pulls": []
+  "pulls": [
+    {
+      "number": 3,
+      "id": "PR_kwDOLJkIfM5mupaH",
+      "title": "Improve example, fix #2",
+      "url": "https://github.com/vcstuff/sd-jwt-vc-types/pull/3",
+      "state": "MERGED",
+      "author": "danielfett",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "Closes #2\r\n\r\n[click here for rendered preview of PR](https://github.com/<repo-name>/<branch-name>/<draft-name>.html)",
+      "createdAt": "2024-02-13T09:37:38Z",
+      "updatedAt": "2024-02-14T13:10:04Z",
+      "baseRepository": "vcstuff/sd-jwt-vc-types",
+      "baseRefName": "main",
+      "baseRefOid": "036ca33b663d4587391f55523ffd0726be92aec4",
+      "headRepository": "vcstuff/sd-jwt-vc-types",
+      "headRefName": "danielfett/fix-2",
+      "headRefOid": "c4aae5e0f403e57b93841105de048b1644a6a3da",
+      "closedAt": "2024-02-14T13:10:03Z",
+      "mergedAt": "2024-02-14T13:10:03Z",
+      "mergedBy": "danielfett",
+      "mergeCommit": {
+        "oid": "6af73a17452331c8e64a35f7f9f3e89c197b81fb"
+      },
+      "comments": [],
+      "reviews": [
+        {
+          "id": "PRR_kwDOLJkIfM5v7xpj",
+          "commit": {
+            "abbreviatedOid": "e8cd9e0"
+          },
+          "author": "jogu",
+          "authorAssociation": "CONTRIBUTOR",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2024-02-13T13:29:22Z",
+          "updatedAt": "2024-02-13T13:31:17Z",
+          "comments": [
+            {
+              "originalPosition": 79,
+              "body": "Possibly isn't quite aligned, perhaps:\r\n\r\n```suggestion\r\n              \"alt_text\":\"Betelgeuse Ministry of Education logo\"\r\n```\r\n\r\nI can't make a suggestion for the German translation, sorry :-)",
+              "createdAt": "2024-02-13T13:29:22Z",
+              "updatedAt": "2024-02-13T13:31:17Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOLJkIfM5wEg4F",
+          "commit": {
+            "abbreviatedOid": "684c136"
+          },
+          "author": "danielfett",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2024-02-14T13:09:50Z",
+          "updatedAt": "2024-02-14T13:09:50Z",
+          "comments": [
+            {
+              "originalPosition": 117,
+              "body": "```suggestion\r\n              \"alt_text\":\"Logo des Betelgeusischen Bildungsministeriums\"\r\n```",
+              "createdAt": "2024-02-14T13:09:50Z",
+              "updatedAt": "2024-02-14T13:09:50Z"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "number": 5,
+      "id": "PR_kwDOLJkIfM5m3Oe1",
+      "title": "Work on solution for paths of claims",
+      "url": "https://github.com/vcstuff/sd-jwt-vc-types/pull/5",
+      "state": "OPEN",
+      "author": "danielfett",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "\r\n[click here for rendered preview of PR](https://github.com/<repo-name>/<branch-name>/<draft-name>.html)",
+      "createdAt": "2024-02-14T13:52:35Z",
+      "updatedAt": "2024-02-14T23:27:26Z",
+      "baseRepository": "vcstuff/sd-jwt-vc-types",
+      "baseRefName": "main",
+      "baseRefOid": "6af73a17452331c8e64a35f7f9f3e89c197b81fb",
+      "headRepository": "vcstuff/sd-jwt-vc-types",
+      "headRefName": "danielfett/fix-claims",
+      "headRefOid": "10dcfda2642887fb5511b93a804fbbbb91155ff8",
+      "closedAt": null,
+      "mergedAt": null,
+      "mergedBy": null,
+      "mergeCommit": null,
+      "comments": [
+        {
+          "author": "bc-pi",
+          "authorAssociation": "NONE",
+          "body": "> [click here for rendered preview of PR](https://github.com/%3Crepo-name%3E/%3Cbranch-name%3E/%3Cdraft-name%3E.html)\r\n\r\nThat 404s FWIW. https://vcstuff.github.io/sd-jwt-vc-types/danielfett/fix-claims/draft-fett-oauth-sd-jwt-vc-types.html should work.\r\n\r\nI think I like this approach though.  \r\n\r\n ",
+          "createdAt": "2024-02-14T23:23:17Z",
+          "updatedAt": "2024-02-14T23:27:26Z"
+        }
+      ],
+      "reviews": []
+    }
+  ]
 }
