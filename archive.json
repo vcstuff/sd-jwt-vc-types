@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2024-02-15T01:11:16.321900+00:00",
+  "timestamp": "2024-02-18T01:15:18.032008+00:00",
   "repo": "vcstuff/sd-jwt-vc-types",
   "labels": [
     {
@@ -218,7 +218,7 @@
       "labels": [],
       "body": "\r\n[click here for rendered preview of PR](https://github.com/<repo-name>/<branch-name>/<draft-name>.html)",
       "createdAt": "2024-02-14T13:52:35Z",
-      "updatedAt": "2024-02-14T23:27:26Z",
+      "updatedAt": "2024-02-15T20:39:05Z",
       "baseRepository": "vcstuff/sd-jwt-vc-types",
       "baseRefName": "main",
       "baseRefOid": "6af73a17452331c8e64a35f7f9f3e89c197b81fb",
@@ -238,7 +238,108 @@
           "updatedAt": "2024-02-14T23:27:26Z"
         }
       ],
-      "reviews": []
+      "reviews": [
+        {
+          "id": "PRR_kwDOLJkIfM5wRpLN",
+          "commit": {
+            "abbreviatedOid": "10dcfda"
+          },
+          "author": "bc-pi",
+          "authorAssociation": "NONE",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2024-02-15T19:32:44Z",
+          "updatedAt": "2024-02-15T19:32:44Z",
+          "comments": [
+            {
+              "originalPosition": 85,
+              "body": "I've read this bit several times and it just doesn't seem right (i.e., \"object MAY contain an object\" wouldn't be valid JSON and I don't think is what you are trying to say anyway, and with \"property value MUST be an object\" - there's no property value to be an object at this level). Here is an attempt to adjust the words to say what I think you were trying to say:\r\n\r\n```suggestion\r\nThe array MAY contain an object for each claim that is supported by the type.\r\nEach object contains the following properties:\r\n```",
+              "createdAt": "2024-02-15T19:32:44Z",
+              "updatedAt": "2024-02-15T20:25:35Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOLJkIfM5wR2nL",
+          "commit": {
+            "abbreviatedOid": "10dcfda"
+          },
+          "author": "bc-pi",
+          "authorAssociation": "NONE",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2024-02-15T19:53:19Z",
+          "updatedAt": "2024-02-15T19:53:19Z",
+          "comments": [
+            {
+              "originalPosition": 140,
+              "body": "I wonder if it might be worthwhile to add one with just `[\"degrees\"]` or `[\"address\"]` to give an example of selecting and providing metadata about the higher level claim of a nested claim structure? ",
+              "createdAt": "2024-02-15T19:53:19Z",
+              "updatedAt": "2024-02-15T19:53:19Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOLJkIfM5wSJYn",
+          "commit": {
+            "abbreviatedOid": "10dcfda"
+          },
+          "author": "bc-pi",
+          "authorAssociation": "NONE",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2024-02-15T20:24:29Z",
+          "updatedAt": "2024-02-15T20:24:30Z",
+          "comments": [
+            {
+              "originalPosition": 153,
+              "body": "The possible plural on \"array(s)\" here jumped out at me and gave pause. I wonder putting a limit of a max of one `null` element per path array would be a useful simplification (and acceptable limitation)? ",
+              "createdAt": "2024-02-15T20:24:29Z",
+              "updatedAt": "2024-02-15T20:24:30Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOLJkIfM5wSNTb",
+          "commit": {
+            "abbreviatedOid": "10dcfda"
+          },
+          "author": "bc-pi",
+          "authorAssociation": "NONE",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2024-02-15T20:33:22Z",
+          "updatedAt": "2024-02-15T20:33:22Z",
+          "comments": [
+            {
+              "originalPosition": 141,
+              "body": "This example is somewhat different than the others and not high on the list of the parts of a claims structure that I imagine will be selected to provide metadata about. I dunno but wonder if having it detracts more than helps. Just a thought...   ",
+              "createdAt": "2024-02-15T20:33:22Z",
+              "updatedAt": "2024-02-15T20:33:22Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOLJkIfM5wSQew",
+          "commit": {
+            "abbreviatedOid": "10dcfda"
+          },
+          "author": "bc-pi",
+          "authorAssociation": "NONE",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2024-02-15T20:39:04Z",
+          "updatedAt": "2024-02-15T20:39:05Z",
+          "comments": [
+            {
+              "originalPosition": 140,
+              "body": "Something like\r\n- `[\"address\"]`: The claim `address` with its sub-claims as the value is selected.\r\n",
+              "createdAt": "2024-02-15T20:39:05Z",
+              "updatedAt": "2024-02-15T20:39:05Z"
+            }
+          ]
+        }
+      ]
     }
   ]
 }
