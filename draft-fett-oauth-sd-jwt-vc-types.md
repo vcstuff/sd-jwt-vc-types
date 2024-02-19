@@ -409,8 +409,8 @@ MUST contain at least one of the following properties:
 The `claims` property is an array of objects containing information about
 particular claims for displaying and validating the claims.
 
-The object MAY contain an object for each claim that is supported by the type.
-The property value MUST be an object containing the following properties:
+The array MAY contain an object for each claim that is supported by the type.
+Each object contains the following properties:
 
 - `path`: An array indicating the claim or claims that are being addressed, as
   described below. This property is REQUIRED.
@@ -458,6 +458,7 @@ The following shows examples of `path` values and the respective selected
 claims:
 
 - `["name"]`: The claim `name` with the value `Arthur Dent` is selected.
+- `["address"]`: The claim `address` with its sub-claims as the value is selected.
 - `["address", "street_address"]`: The claim `street_address` with the value
   `42 Market Street` is selected.
 - `["degrees", null, "type"]`: All `type` claims in the `degrees` array are
