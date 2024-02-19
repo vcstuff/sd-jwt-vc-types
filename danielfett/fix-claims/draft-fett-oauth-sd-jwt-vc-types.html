@@ -9,13 +9,13 @@
 <meta content="
        This specification describes metadata for SD-JWT based Verifiable Credentials. 
     " name="description">
-<meta content="xml2rfc 3.19.2" name="generator">
+<meta content="xml2rfc 3.19.4" name="generator">
 <meta content="security" name="keyword">
 <meta content="oauth2" name="keyword">
 <meta content="sd-jwt" name="keyword">
 <meta content="draft-fett-oauth-sd-jwt-vc-types-latest" name="ietf.draft">
 <!-- Generator version information:
-  xml2rfc 3.19.2
+  xml2rfc 3.19.4
     Python 3.11.6
     ConfigArgParse 1.7
     google-i18n-address 3.1.0
@@ -1031,7 +1031,7 @@ svg :is([fill="white"], [fill^="#fff"]) {
 </tr></thead>
 <tfoot><tr>
 <td class="left">Fett</td>
-<td class="center">Expires 17 August 2024</td>
+<td class="center">Expires 22 August 2024</td>
 <td class="right">[Page]</td>
 </tr></tfoot>
 </table>
@@ -1044,12 +1044,12 @@ svg :is([fill="white"], [fill^="#fff"]) {
 <dd class="internet-draft">draft-fett-oauth-sd-jwt-vc-types-latest</dd>
 <dt class="label-published">Published:</dt>
 <dd class="published">
-<time datetime="2024-02-14" class="published">14 February 2024</time>
+<time datetime="2024-02-19" class="published">19 February 2024</time>
     </dd>
 <dt class="label-intended-status">Intended Status:</dt>
 <dd class="intended-status">Standards Track</dd>
 <dt class="label-expires">Expires:</dt>
-<dd class="expires"><time datetime="2024-08-17">17 August 2024</time></dd>
+<dd class="expires"><time datetime="2024-08-22">22 August 2024</time></dd>
 <dt class="label-authors">Author:</dt>
 <dd class="authors">
 <div class="author">
@@ -1094,7 +1094,7 @@ svg :is([fill="white"], [fill^="#fff"]) {
         time. It is inappropriate to use Internet-Drafts as reference
         material or to cite them other than as "work in progress."<a href="#section-boilerplate.1-3" class="pilcrow">¶</a></p>
 <p id="section-boilerplate.1-4">
-        This Internet-Draft will expire on 17 August 2024.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
+        This Internet-Draft will expire on 22 August 2024.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="copyright">
@@ -1742,8 +1742,8 @@ values being <code>normal</code> and <code>high</code>. This property is OPTIONA
       </h2>
 <p id="section-8-1">The <code>claims</code> property is an array of objects containing information about
 particular claims for displaying and validating the claims.<a href="#section-8-1" class="pilcrow">¶</a></p>
-<p id="section-8-2">The object MAY contain an object for each claim that is supported by the type.
-The property value MUST be an object containing the following properties:<a href="#section-8-2" class="pilcrow">¶</a></p>
+<p id="section-8-2">The array MAY contain an object for each claim that is supported by the type.
+Each object contains the following properties:<a href="#section-8-2" class="pilcrow">¶</a></p>
 <ul class="compact">
 <li class="compact" id="section-8-3.1">
           <code>path</code>: An array indicating the claim or claims that are being addressed, as
@@ -1804,15 +1804,18 @@ claims:<a href="#section-8.1-4" class="pilcrow">¶</a></p>
             <code>["name"]</code>: The claim <code>name</code> with the value <code>Arthur Dent</code> is selected.<a href="#section-8.1-5.1" class="pilcrow">¶</a>
 </li>
           <li class="compact" id="section-8.1-5.2">
-            <code>["address", "street_address"]</code>: The claim <code>street_address</code> with the value
-<code>42 Market Street</code> is selected.<a href="#section-8.1-5.2" class="pilcrow">¶</a>
+            <code>["address"]</code>: The claim <code>address</code> with its sub-claims as the value is selected.<a href="#section-8.1-5.2" class="pilcrow">¶</a>
 </li>
           <li class="compact" id="section-8.1-5.3">
-            <code>["degrees", null, "type"]</code>: All <code>type</code> claims in the <code>degrees</code> array are
-selected.<a href="#section-8.1-5.3" class="pilcrow">¶</a>
+            <code>["address", "street_address"]</code>: The claim <code>street_address</code> with the value
+<code>42 Market Street</code> is selected.<a href="#section-8.1-5.3" class="pilcrow">¶</a>
 </li>
           <li class="compact" id="section-8.1-5.4">
-            <code>["nationalities", 1]</code>: The second nationality is selected.<a href="#section-8.1-5.4" class="pilcrow">¶</a>
+            <code>["degrees", null, "type"]</code>: All <code>type</code> claims in the <code>degrees</code> array are
+selected.<a href="#section-8.1-5.4" class="pilcrow">¶</a>
+</li>
+          <li class="compact" id="section-8.1-5.5">
+            <code>["nationalities", 1]</code>: The second nationality is selected.<a href="#section-8.1-5.5" class="pilcrow">¶</a>
 </li>
         </ul>
 <p id="section-8.1-6">In detail, the array is processed from left to right as follows:<a href="#section-8.1-6" class="pilcrow">¶</a></p>

@@ -4,8 +4,8 @@
 
 Web Authorization Protocol                                       D. Fett
 Internet-Draft                                             Authlete Inc.
-Intended status: Standards Track                        14 February 2024
-Expires: 17 August 2024
+Intended status: Standards Track                        19 February 2024
+Expires: 22 August 2024
 
 
                         SD-JWT VC Type Metadata
@@ -42,7 +42,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 17 August 2024.
+   This Internet-Draft will expire on 22 August 2024.
 
 Copyright Notice
 
@@ -495,9 +495,8 @@ Table of Contents
    The claims property is an array of objects containing information
    about particular claims for displaying and validating the claims.
 
-   The object MAY contain an object for each claim that is supported by
-   the type.  The property value MUST be an object containing the
-   following properties:
+   The array MAY contain an object for each claim that is supported by
+   the type.  Each object contains the following properties:
 
    *  path: An array indicating the claim or claims that are being
       addressed, as described below.  This property is REQUIRED.
@@ -546,6 +545,8 @@ Table of Contents
    selected claims:
 
    *  ["name"]: The claim name with the value Arthur Dent is selected.
+   *  ["address"]: The claim address with its sub-claims as the value is
+      selected.
    *  ["address", "street_address"]: The claim street_address with the
       value 42 Market Street is selected.
    *  ["degrees", null, "type"]: All type claims in the degrees array
