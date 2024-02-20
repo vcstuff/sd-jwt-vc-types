@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2024-02-18T01:15:18.032008+00:00",
+  "timestamp": "2024-02-20T01:09:55.678874+00:00",
   "repo": "vcstuff/sd-jwt-vc-types",
   "labels": [
     {
@@ -218,13 +218,13 @@
       "labels": [],
       "body": "\r\n[click here for rendered preview of PR](https://github.com/<repo-name>/<branch-name>/<draft-name>.html)",
       "createdAt": "2024-02-14T13:52:35Z",
-      "updatedAt": "2024-02-15T20:39:05Z",
+      "updatedAt": "2024-02-19T14:52:31Z",
       "baseRepository": "vcstuff/sd-jwt-vc-types",
       "baseRefName": "main",
       "baseRefOid": "6af73a17452331c8e64a35f7f9f3e89c197b81fb",
       "headRepository": "vcstuff/sd-jwt-vc-types",
       "headRefName": "danielfett/fix-claims",
-      "headRefOid": "10dcfda2642887fb5511b93a804fbbbb91155ff8",
+      "headRefOid": "49581b1ef2df2911669327fe1c33a8a4ecad52f9",
       "closedAt": null,
       "mergedAt": null,
       "mergedBy": null,
@@ -336,6 +336,126 @@
               "body": "Something like\r\n- `[\"address\"]`: The claim `address` with its sub-claims as the value is selected.\r\n",
               "createdAt": "2024-02-15T20:39:05Z",
               "updatedAt": "2024-02-15T20:39:05Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOLJkIfM5wh2ZN",
+          "commit": {
+            "abbreviatedOid": "10dcfda"
+          },
+          "author": "danielfett",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2024-02-19T09:18:53Z",
+          "updatedAt": "2024-02-19T09:18:53Z",
+          "comments": [
+            {
+              "originalPosition": 138,
+              "body": "```suggestion\r\n- `[\"address\"]`: The claim `address` with its sub-claims as the value is selected.\r\n- `[\"address\", \"street_address\"]`: The claim `street_address` with the value\r\n  `42 Market Street` is selected.\r\n```",
+              "createdAt": "2024-02-19T09:18:53Z",
+              "updatedAt": "2024-02-19T09:18:53Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOLJkIfM5wh2uY",
+          "commit": {
+            "abbreviatedOid": "10dcfda"
+          },
+          "author": "danielfett",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2024-02-19T09:19:33Z",
+          "updatedAt": "2024-02-19T09:19:33Z",
+          "comments": [
+            {
+              "originalPosition": 141,
+              "body": "It shows a corner case we either need to discuss or prohibit. Not sure if this will actually be useful though.",
+              "createdAt": "2024-02-19T09:19:33Z",
+              "updatedAt": "2024-02-19T09:19:33Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOLJkIfM5wh4EL",
+          "commit": {
+            "abbreviatedOid": "10dcfda"
+          },
+          "author": "danielfett",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2024-02-19T09:22:14Z",
+          "updatedAt": "2024-02-19T09:22:14Z",
+          "comments": [
+            {
+              "originalPosition": 153,
+              "body": "I think that something like \"select the names of the courses required for all degrees earned\" or something like that is a valid use case. I'm also not sure whether such a limitation would make the implementation significantly easier.",
+              "createdAt": "2024-02-19T09:22:14Z",
+              "updatedAt": "2024-02-19T09:22:14Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOLJkIfM5wh4Zh",
+          "commit": {
+            "abbreviatedOid": "49581b1"
+          },
+          "author": "danielfett",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2024-02-19T09:22:51Z",
+          "updatedAt": "2024-02-19T09:22:51Z",
+          "comments": [
+            {
+              "originalPosition": 140,
+              "body": "Done!",
+              "createdAt": "2024-02-19T09:22:51Z",
+              "updatedAt": "2024-02-19T09:22:51Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOLJkIfM5wkZFj",
+          "commit": {
+            "abbreviatedOid": "10dcfda"
+          },
+          "author": "bc-pi",
+          "authorAssociation": "NONE",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2024-02-19T14:46:33Z",
+          "updatedAt": "2024-02-19T14:46:33Z",
+          "comments": [
+            {
+              "originalPosition": 141,
+              "body": "Yeah, but rather than discuss or prohibit I guess I'm suggesting just don't call attention to :) at least for right now ",
+              "createdAt": "2024-02-19T14:46:33Z",
+              "updatedAt": "2024-02-19T14:46:33Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOLJkIfM5wkc0a",
+          "commit": {
+            "abbreviatedOid": "10dcfda"
+          },
+          "author": "bc-pi",
+          "authorAssociation": "NONE",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2024-02-19T14:52:30Z",
+          "updatedAt": "2024-02-19T14:52:31Z",
+          "comments": [
+            {
+              "originalPosition": 153,
+              "body": "I'm also not sure to be honest but it seemed like potentially useful simplification. The \"something like ... or something like\" case you have doesn't seem invalid but I just don't know if it's necessary either. I'm honestly not sure though so feel free to resolve this comment having considered and dismissed the idea :) ",
+              "createdAt": "2024-02-19T14:52:30Z",
+              "updatedAt": "2024-02-19T14:52:31Z"
             }
           ]
         }
