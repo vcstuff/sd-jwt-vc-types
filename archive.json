@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2024-02-20T01:09:55.678874+00:00",
+  "timestamp": "2024-02-22T01:10:37.897890+00:00",
   "repo": "vcstuff/sd-jwt-vc-types",
   "labels": [
     {
@@ -218,7 +218,7 @@
       "labels": [],
       "body": "\r\n[click here for rendered preview of PR](https://github.com/<repo-name>/<branch-name>/<draft-name>.html)",
       "createdAt": "2024-02-14T13:52:35Z",
-      "updatedAt": "2024-02-19T14:52:31Z",
+      "updatedAt": "2024-02-20T18:19:31Z",
       "baseRepository": "vcstuff/sd-jwt-vc-types",
       "baseRefName": "main",
       "baseRefOid": "6af73a17452331c8e64a35f7f9f3e89c197b81fb",
@@ -236,6 +236,13 @@
           "body": "> [click here for rendered preview of PR](https://github.com/%3Crepo-name%3E/%3Cbranch-name%3E/%3Cdraft-name%3E.html)\r\n\r\nThat 404s FWIW. https://vcstuff.github.io/sd-jwt-vc-types/danielfett/fix-claims/draft-fett-oauth-sd-jwt-vc-types.html should work.\r\n\r\nI think I like this approach though.  \r\n\r\n ",
           "createdAt": "2024-02-14T23:23:17Z",
           "updatedAt": "2024-02-14T23:27:26Z"
+        },
+        {
+          "author": "c2bo",
+          "authorAssociation": "NONE",
+          "body": "I've played around with some of the options and I was surprised how well the array of strings seemed to work when traversing a nested struct (fits quite nicely with a stack remembering the parent names). The only thing that just feels wrong to me is the null to signal all elements of an array  but not sure what the cleanest/best option would be.",
+          "createdAt": "2024-02-20T18:19:30Z",
+          "updatedAt": "2024-02-20T18:19:30Z"
         }
       ],
       "reviews": [
