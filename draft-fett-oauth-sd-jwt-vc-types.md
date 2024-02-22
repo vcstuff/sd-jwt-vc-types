@@ -463,7 +463,6 @@ claims:
   `42 Market Street` is selected.
 - `["degrees", null, "type"]`: All `type` claims in the `degrees` array are
   selected.
-- `["nationalities", 1]`: The second nationality is selected.
 
 In detail, the array is processed from left to right as follows:
 
