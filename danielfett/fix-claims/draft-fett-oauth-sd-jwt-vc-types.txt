@@ -4,8 +4,8 @@
 
 Web Authorization Protocol                                       D. Fett
 Internet-Draft                                             Authlete Inc.
-Intended status: Standards Track                        19 February 2024
-Expires: 22 August 2024
+Intended status: Standards Track                        22 February 2024
+Expires: 25 August 2024
 
 
                         SD-JWT VC Type Metadata
@@ -42,7 +42,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 22 August 2024.
+   This Internet-Draft will expire on 25 August 2024.
 
 Copyright Notice
 
@@ -551,7 +551,6 @@ Table of Contents
       value 42 Market Street is selected.
    *  ["degrees", null, "type"]: All type claims in the degrees array
       are selected.
-   *  ["nationalities", 1]: The second nationality is selected.
 
    In detail, the array is processed from left to right as follows:
 
