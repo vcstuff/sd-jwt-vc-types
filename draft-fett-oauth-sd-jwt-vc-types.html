@@ -9,13 +9,13 @@
 <meta content="
        This specification describes metadata for SD-JWT based Verifiable Credentials. 
     " name="description">
-<meta content="xml2rfc 3.19.2" name="generator">
+<meta content="xml2rfc 3.19.4" name="generator">
 <meta content="security" name="keyword">
 <meta content="oauth2" name="keyword">
 <meta content="sd-jwt" name="keyword">
 <meta content="draft-fett-oauth-sd-jwt-vc-types-latest" name="ietf.draft">
 <!-- Generator version information:
-  xml2rfc 3.19.2
+  xml2rfc 3.19.4
     Python 3.11.6
     ConfigArgParse 1.7
     google-i18n-address 3.1.0
@@ -1031,7 +1031,7 @@ svg :is([fill="white"], [fill^="#fff"]) {
 </tr></thead>
 <tfoot><tr>
 <td class="left">Fett</td>
-<td class="center">Expires 17 August 2024</td>
+<td class="center">Expires 25 August 2024</td>
 <td class="right">[Page]</td>
 </tr></tfoot>
 </table>
@@ -1044,12 +1044,12 @@ svg :is([fill="white"], [fill^="#fff"]) {
 <dd class="internet-draft">draft-fett-oauth-sd-jwt-vc-types-latest</dd>
 <dt class="label-published">Published:</dt>
 <dd class="published">
-<time datetime="2024-02-14" class="published">14 February 2024</time>
+<time datetime="2024-02-22" class="published">22 February 2024</time>
     </dd>
 <dt class="label-intended-status">Intended Status:</dt>
 <dd class="intended-status">Standards Track</dd>
 <dt class="label-expires">Expires:</dt>
-<dd class="expires"><time datetime="2024-08-17">17 August 2024</time></dd>
+<dd class="expires"><time datetime="2024-08-25">25 August 2024</time></dd>
 <dt class="label-authors">Author:</dt>
 <dd class="authors">
 <div class="author">
@@ -1094,7 +1094,7 @@ svg :is([fill="white"], [fill^="#fff"]) {
         time. It is inappropriate to use Internet-Drafts as reference
         material or to cite them other than as "work in progress."<a href="#section-boilerplate.1-3" class="pilcrow">¶</a></p>
 <p id="section-boilerplate.1-4">
-        This Internet-Draft will expire on 17 August 2024.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
+        This Internet-Draft will expire on 25 August 2024.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="copyright">
@@ -1178,13 +1178,16 @@ svg :is([fill="white"], [fill^="#fff"]) {
             <p id="section-toc.1-1.8.1"><a href="#section-8" class="auto internal xref">8</a>.  <a href="#name-claim-metadata" class="internal xref">Claim Metadata</a></p>
 <ul class="compact toc ulBare ulEmpty">
 <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.8.2.1">
-                <p id="section-toc.1-1.8.2.1.1"><a href="#section-8.1" class="auto internal xref">8.1</a>.  <a href="#name-claim-display-metadata" class="internal xref">Claim Display Metadata</a></p>
+                <p id="section-toc.1-1.8.2.1.1"><a href="#section-8.1" class="auto internal xref">8.1</a>.  <a href="#name-claim-path" class="internal xref">Claim Path</a></p>
 </li>
               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.8.2.2">
-                <p id="section-toc.1-1.8.2.2.1"><a href="#section-8.2" class="auto internal xref">8.2</a>.  <a href="#name-claim-verification-metadata" class="internal xref">Claim Verification Metadata</a></p>
+                <p id="section-toc.1-1.8.2.2.1"><a href="#section-8.2" class="auto internal xref">8.2</a>.  <a href="#name-claim-display-metadata" class="internal xref">Claim Display Metadata</a></p>
 </li>
               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.8.2.3">
-                <p id="section-toc.1-1.8.2.3.1"><a href="#section-8.3" class="auto internal xref">8.3</a>.  <a href="#name-claim-selective-disclosure-" class="internal xref">Claim Selective Disclosure Metadata</a></p>
+                <p id="section-toc.1-1.8.2.3.1"><a href="#section-8.3" class="auto internal xref">8.3</a>.  <a href="#name-claim-verification-metadata" class="internal xref">Claim Verification Metadata</a></p>
+</li>
+              <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.8.2.4">
+                <p id="section-toc.1-1.8.2.4.1"><a href="#section-8.4" class="auto internal xref">8.4</a>.  <a href="#name-claim-selective-disclosure-" class="internal xref">Claim Selective Disclosure Metadata</a></p>
 </li>
             </ul>
 </li>
@@ -1343,8 +1346,9 @@ metadata is retrieved from the URL
       }
     }
   ],
-  "claims":{
-    "/name":{
+  "claims":[
+    {
+      "path":["name"],
       "display":{
         "de-DE":{
           "label":"Vor- und Nachname",
@@ -1358,21 +1362,8 @@ metadata is retrieved from the URL
       "verification":"verified",
       "sd":"allowed"
     },
-    "/degree":{
-      "display":{
-        "de-DE":{
-          "label":"Abschluss",
-          "description":"Der Abschluss des Studenten"
-        },
-        "en-US":{
-          "label":"Degree",
-          "description":"Degree earned by the student"
-        }
-      },
-      "verification":"authoritative",
-      "sd":"allowed"
-    },
-    "/address":{
+    {
+      "path":["address"],
       "display":{
         "de-DE":{
           "label":"Adresse",
@@ -1386,7 +1377,8 @@ metadata is retrieved from the URL
       "verification":"self-attested",
       "sd":"always"
     },
-    "/address/street_address":{
+    {
+      "path":["address", "street_address"],
       "display":{
         "de-DE":{
           "label":"Straße"
@@ -1397,8 +1389,23 @@ metadata is retrieved from the URL
       },
       "verification":"self-attested",
       "sd":"always"
+    },
+    {
+      "path":["degrees", null],
+      "display":{
+        "de-DE":{
+          "label":"Abschluss",
+          "description":"Der Abschluss des Studenten"
+        },
+        "en-US":{
+          "label":"Degree",
+          "description":"Degree earned by the student"
+        }
+      },
+      "verification":"authoritative",
+      "sd":"allowed"
     }
-  },
+  ],
   "schema_url":"https://exampleuniversity.com/public/credential-schema-0.9",
   "schema_url#integrity":"sha256-o984vn819a48ui1llkwPmKjZ5t0WRL5ca_xGgX3c1VLmXfh"
 }
@@ -1733,97 +1740,185 @@ values being <code>normal</code> and <code>high</code>. This property is OPTIONA
       <h2 id="name-claim-metadata">
 <a href="#section-8" class="section-number selfRef">8. </a><a href="#name-claim-metadata" class="section-name selfRef">Claim Metadata</a>
       </h2>
-<p id="section-8-1">The <code>claims</code> property is an object containing information about particular claims
-for displaying and validating the claims.<a href="#section-8-1" class="pilcrow">¶</a></p>
-<p id="section-8-2">The object MAY contain a property for each claim that is supported by the type.
-The property name MUST be a JSON Pointer <span>[<a href="#RFC6901" class="cite xref">RFC6901</a>]</span> pointing to the claim in the
-credential. The property value MUST be an object containing the following
-properties:<a href="#section-8-2" class="pilcrow">¶</a></p>
+<p id="section-8-1">The <code>claims</code> property is an array of objects containing information about
+particular claims for displaying and validating the claims.<a href="#section-8-1" class="pilcrow">¶</a></p>
+<p id="section-8-2">The array MAY contain an object for each claim that is supported by the type.
+Each object contains the following properties:<a href="#section-8-2" class="pilcrow">¶</a></p>
 <ul class="compact">
 <li class="compact" id="section-8-3.1">
-          <code>display</code>: An object containing display information for the claim, as
-described in <a href="#ClaimDisplayMetadata" class="auto internal xref">Section 8.1</a>. This property is OPTIONAL.<a href="#section-8-3.1" class="pilcrow">¶</a>
+          <code>path</code>: An array indicating the claim or claims that are being addressed, as
+described below. This property is REQUIRED.<a href="#section-8-3.1" class="pilcrow">¶</a>
 </li>
         <li class="compact" id="section-8-3.2">
-          <code>verification</code>: A string indicating how the claim is verified, as described in
-<a href="#ClaimVerificationMetadata" class="auto internal xref">Section 8.2</a>. This property is OPTIONAL.<a href="#section-8-3.2" class="pilcrow">¶</a>
+          <code>display</code>: An object containing display information for the claim, as
+described in <a href="#ClaimDisplayMetadata" class="auto internal xref">Section 8.2</a>. This property is OPTIONAL.<a href="#section-8-3.2" class="pilcrow">¶</a>
 </li>
         <li class="compact" id="section-8-3.3">
+          <code>verification</code>: A string indicating how the claim is verified, as described in
+<a href="#ClaimVerificationMetadata" class="auto internal xref">Section 8.3</a>. This property is OPTIONAL.<a href="#section-8-3.3" class="pilcrow">¶</a>
+</li>
+        <li class="compact" id="section-8-3.4">
           <code>sd</code>: A string indicating whether the claim is selectively disclosable, as
-described in <a href="#ClaimSelectiveDisclosureMetadata" class="auto internal xref">Section 8.3</a>. This property is OPTIONAL.<a href="#section-8-3.3" class="pilcrow">¶</a>
+described in <a href="#ClaimSelectiveDisclosureMetadata" class="auto internal xref">Section 8.4</a>. This property is OPTIONAL.<a href="#section-8-3.4" class="pilcrow">¶</a>
 </li>
       </ul>
-<p id="section-8-4">Note: The JSON Pointer MUST point to the respective claim as if all selectively
-disclosable claims were disclosed to the Verifier. That means that a consuming
-application which does not have access to all disclosures may not be able to
-validate the claim.<a href="#section-8-4" class="pilcrow">¶</a></p>
-<div id="ClaimDisplayMetadata">
+<div id="ClaimPath">
 <section id="section-8.1">
-        <h3 id="name-claim-display-metadata">
-<a href="#section-8.1" class="section-number selfRef">8.1. </a><a href="#name-claim-display-metadata" class="section-name selfRef">Claim Display Metadata</a>
+        <h3 id="name-claim-path">
+<a href="#section-8.1" class="section-number selfRef">8.1. </a><a href="#name-claim-path" class="section-name selfRef">Claim Path</a>
         </h3>
-<p id="section-8.1-1">The <code>display</code> property is an object containing display information for the
+<p id="section-8.1-1">The <code>path</code> property MUST be a non-empty array of strings, <code>null</code> values, or
+non-negative integers. It is used to select a particular claim in the credential
+or a set of claims. A string indicates that the respective key is to be
+selected, a <code>null</code> value indicates that all elements of the currently selected
+array(s) are to be selected, and a non-negative integer indicates that the
+respective index in an array is to be selected.<a href="#section-8.1-1" class="pilcrow">¶</a></p>
+<p id="section-8.1-2">The following shows a non-normative, simplified example of a credential:<a href="#section-8.1-2" class="pilcrow">¶</a></p>
+<div class="lang-json sourcecode" id="section-8.1-3">
+<pre>{
+  "name": "Arthur Dent",
+  "address": {
+    "street_address": "42 Market Street",
+    "city": "Milliways",
+    "postal_code": "12345"
+  },
+  "degrees": [
+    {
+      "type": "Bachelor of Science",
+      "university": "University of Betelgeuse"
+    },
+    {
+      "type": "Master of Science",
+      "university": "University of Betelgeuse"
+    }
+  ],
+  "nationalities": ["British", "Betelgeusian"]
+}
+
+</pre><a href="#section-8.1-3" class="pilcrow">¶</a>
+</div>
+<p id="section-8.1-4">The following shows examples of <code>path</code> values and the respective selected
+claims:<a href="#section-8.1-4" class="pilcrow">¶</a></p>
+<ul class="compact">
+<li class="compact" id="section-8.1-5.1">
+            <code>["name"]</code>: The claim <code>name</code> with the value <code>Arthur Dent</code> is selected.<a href="#section-8.1-5.1" class="pilcrow">¶</a>
+</li>
+          <li class="compact" id="section-8.1-5.2">
+            <code>["address"]</code>: The claim <code>address</code> with its sub-claims as the value is selected.<a href="#section-8.1-5.2" class="pilcrow">¶</a>
+</li>
+          <li class="compact" id="section-8.1-5.3">
+            <code>["address", "street_address"]</code>: The claim <code>street_address</code> with the value
+<code>42 Market Street</code> is selected.<a href="#section-8.1-5.3" class="pilcrow">¶</a>
+</li>
+          <li class="compact" id="section-8.1-5.4">
+            <code>["degrees", null, "type"]</code>: All <code>type</code> claims in the <code>degrees</code> array are
+selected.<a href="#section-8.1-5.4" class="pilcrow">¶</a>
+</li>
+        </ul>
+<p id="section-8.1-6">In detail, the array is processed from left to right as follows:<a href="#section-8.1-6" class="pilcrow">¶</a></p>
+<ol start="1" type="1" class="compact type-1" id="section-8.1-7">
+<li id="section-8.1-7.1">Select the root element of the credential, i.e., the top-level JSON object.<a href="#section-8.1-7.1" class="pilcrow">¶</a>
+</li>
+          <li id="section-8.1-7.2">
+            <p id="section-8.1-7.2.1">Process the <code>path</code> components from left to right:<a href="#section-8.1-7.2.1" class="pilcrow">¶</a></p>
+<ol start="1" type="1" class="compact type-1" id="section-8.1-7.2.2">
+<li id="section-8.1-7.2.2.1">If the <code>path</code> component is a string, select the element in the respective
+key in the currently selected element(s). If any of the currently
+selected element(s) is not an object, abort processing and return an
+error. If the key does not exist in any element currently selected,
+remove that element from the selection.<a href="#section-8.1-7.2.2.1" class="pilcrow">¶</a>
+</li>
+              <li id="section-8.1-7.2.2.2">If the <code>path</code> component is <code>null</code>, select all elements of the currently
+selected array(s). If any of the currently selected element(s) is not an
+array, abort processing and return an error.<a href="#section-8.1-7.2.2.2" class="pilcrow">¶</a>
+</li>
+              <li id="section-8.1-7.2.2.3">If the <code>path</code> component is a non-negative integer, select the element at
+the respective index in the currently selected array(s). If any of the
+currently selected element(s) is not an array, abort processing and
+return an error. If the index does not exist in a selected array, remove
+that array from the selection.<a href="#section-8.1-7.2.2.3" class="pilcrow">¶</a>
+</li>
+              <li id="section-8.1-7.2.2.4">If the set of elements currently selected is empty, abort processing and
+return an error.<a href="#section-8.1-7.2.2.4" class="pilcrow">¶</a>
+</li>
+            </ol>
+</li>
+        </ol>
+<p id="section-8.1-8">The result of the processing is the set of elements to which the respective
+claim metadata applies.<a href="#section-8.1-8" class="pilcrow">¶</a></p>
+<p id="section-8.1-9">Note: The <code>path</code> property MUST point to the respective claim as if all
+selectively disclosable claims were disclosed to a Verifier. That means that a
+consuming application which does not have access to all disclosures may not be
+able to identify the claim which is being addressed.<a href="#section-8.1-9" class="pilcrow">¶</a></p>
+</section>
+</div>
+<div id="ClaimDisplayMetadata">
+<section id="section-8.2">
+        <h3 id="name-claim-display-metadata">
+<a href="#section-8.2" class="section-number selfRef">8.2. </a><a href="#name-claim-display-metadata" class="section-name selfRef">Claim Display Metadata</a>
+        </h3>
+<p id="section-8.2-1">The <code>display</code> property is an object containing display information for the
 claim. The object MUST contain a property for each language that is supported by
 the type. The property name MUST be a language tag as defined in Section 2 of
 <span>[<a href="#RFC5646" class="cite xref">RFC5646</a>]</span>. The consuming application MUST use the language tag it considers most
-appropriate for the user.<a href="#section-8.1-1" class="pilcrow">¶</a></p>
-<p id="section-8.1-2">The property value MUST be an object containing the following properties:<a href="#section-8.1-2" class="pilcrow">¶</a></p>
+appropriate for the user.<a href="#section-8.2-1" class="pilcrow">¶</a></p>
+<p id="section-8.2-2">The property value MUST be an object containing the following properties:<a href="#section-8.2-2" class="pilcrow">¶</a></p>
 <ul class="compact">
-<li class="compact" id="section-8.1-3.1">
+<li class="compact" id="section-8.2-3.1">
             <code>label</code>: A human-readable label for the claim, intended for end users. This
-property is OPTIONAL.<a href="#section-8.1-3.1" class="pilcrow">¶</a>
+property is OPTIONAL.<a href="#section-8.2-3.1" class="pilcrow">¶</a>
 </li>
-          <li class="compact" id="section-8.1-3.2">
+          <li class="compact" id="section-8.2-3.2">
             <code>description</code>: A human-readable description for the claim, intended for end
-users. This property is OPTIONAL.<a href="#section-8.1-3.2" class="pilcrow">¶</a>
+users. This property is OPTIONAL.<a href="#section-8.2-3.2" class="pilcrow">¶</a>
 </li>
         </ul>
 </section>
 </div>
 <div id="ClaimVerificationMetadata">
-<section id="section-8.2">
+<section id="section-8.3">
         <h3 id="name-claim-verification-metadata">
-<a href="#section-8.2" class="section-number selfRef">8.2. </a><a href="#name-claim-verification-metadata" class="section-name selfRef">Claim Verification Metadata</a>
+<a href="#section-8.3" class="section-number selfRef">8.3. </a><a href="#name-claim-verification-metadata" class="section-name selfRef">Claim Verification Metadata</a>
         </h3>
-<p id="section-8.2-1">The <code>verification</code> property is a string indicating how the claim is verified.
-The following values are defined:<a href="#section-8.2-1" class="pilcrow">¶</a></p>
+<p id="section-8.3-1">The <code>verification</code> property is a string indicating how the claim is verified.
+The following values are defined:<a href="#section-8.3-1" class="pilcrow">¶</a></p>
 <ul class="compact">
-<li class="compact" id="section-8.2-2.1">
+<li class="compact" id="section-8.3-2.1">
             <code>self-attested</code>: The claim's value was self-attested by the End-User towards
 the Issuer. The Issuer did not verify the claim. For example, in a diploma,
-the residential address of the student may be self-attested.<a href="#section-8.2-2.1" class="pilcrow">¶</a>
+the residential address of the student may be self-attested.<a href="#section-8.3-2.1" class="pilcrow">¶</a>
 </li>
-          <li class="compact" id="section-8.2-2.2">
+          <li class="compact" id="section-8.3-2.2">
             <code>verified</code>: The claim's value was verified by the Issuer. The Issuer may have
 used a third party to verify the claim. For example, in a diploma, the birth
 date of the student may have been verified by the university using the
-student's passport.<a href="#section-8.2-2.2" class="pilcrow">¶</a>
+student's passport.<a href="#section-8.3-2.2" class="pilcrow">¶</a>
 </li>
-          <li class="compact" id="section-8.2-2.3">
+          <li class="compact" id="section-8.3-2.3">
             <code>authoritative</code>: The Issuer claims to be the authority to make a statement
 about the claim's value. For example, in a diploma, the degree earned by the
 student may be authoritative if the Issuer is the university that issued the
-degree.<a href="#section-8.2-2.3" class="pilcrow">¶</a>
+degree.<a href="#section-8.3-2.3" class="pilcrow">¶</a>
 </li>
         </ul>
 </section>
 </div>
 <div id="ClaimSelectiveDisclosureMetadata">
-<section id="section-8.3">
+<section id="section-8.4">
         <h3 id="name-claim-selective-disclosure-">
-<a href="#section-8.3" class="section-number selfRef">8.3. </a><a href="#name-claim-selective-disclosure-" class="section-name selfRef">Claim Selective Disclosure Metadata</a>
+<a href="#section-8.4" class="section-number selfRef">8.4. </a><a href="#name-claim-selective-disclosure-" class="section-name selfRef">Claim Selective Disclosure Metadata</a>
         </h3>
-<p id="section-8.3-1">The <code>sd</code> property is a string indicating whether the claim is selectively
-disclosable. The following values are defined:<a href="#section-8.3-1" class="pilcrow">¶</a></p>
+<p id="section-8.4-1">The <code>sd</code> property is a string indicating whether the claim is selectively
+disclosable. The following values are defined:<a href="#section-8.4-1" class="pilcrow">¶</a></p>
 <ul class="compact">
-<li class="compact" id="section-8.3-2.1">
-            <code>always</code>: The Issuer MUST make the claim selectively disclosable.<a href="#section-8.3-2.1" class="pilcrow">¶</a>
+<li class="compact" id="section-8.4-2.1">
+            <code>always</code>: The Issuer MUST make the claim selectively disclosable.<a href="#section-8.4-2.1" class="pilcrow">¶</a>
 </li>
-          <li class="compact" id="section-8.3-2.2">
-            <code>allowed</code>: The Issuer MAY make the claim selectively disclosable.<a href="#section-8.3-2.2" class="pilcrow">¶</a>
+          <li class="compact" id="section-8.4-2.2">
+            <code>allowed</code>: The Issuer MAY make the claim selectively disclosable.<a href="#section-8.4-2.2" class="pilcrow">¶</a>
 </li>
-          <li class="compact" id="section-8.3-2.3">
-            <code>never</code>: The Issuer MUST NOT make the claim selectively disclosable.<a href="#section-8.3-2.3" class="pilcrow">¶</a>
+          <li class="compact" id="section-8.4-2.3">
+            <code>never</code>: The Issuer MUST NOT make the claim selectively disclosable.<a href="#section-8.4-2.3" class="pilcrow">¶</a>
 </li>
         </ul>
 </section>
@@ -1924,10 +2019,6 @@ recommendations in <a href="#RobustRetrieval" class="auto internal xref">Section
 <dt id="RFC5646">[RFC5646]</dt>
       <dd>
 <span class="refAuthor">Phillips, A., Ed.</span> and <span class="refAuthor">M. Davis, Ed.</span>, <span class="refTitle">"Tags for Identifying Languages"</span>, <span class="seriesInfo">BCP 47</span>, <span class="seriesInfo">RFC 5646</span>, <span class="seriesInfo">DOI 10.17487/RFC5646</span>, <time datetime="2009-09" class="refDate">September 2009</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc5646">https://www.rfc-editor.org/info/rfc5646</a>&gt;</span>. </dd>
-<dd class="break"></dd>
-<dt id="RFC6901">[RFC6901]</dt>
-      <dd>
-<span class="refAuthor">Bryan, P., Ed.</span>, <span class="refAuthor">Zyp, K.</span>, and <span class="refAuthor">M. Nottingham, Ed.</span>, <span class="refTitle">"JavaScript Object Notation (JSON) Pointer"</span>, <span class="seriesInfo">RFC 6901</span>, <span class="seriesInfo">DOI 10.17487/RFC6901</span>, <time datetime="2013-04" class="refDate">April 2013</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc6901">https://www.rfc-editor.org/info/rfc6901</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 <dt id="W3C.SRI">[W3C.SRI]</dt>
     <dd>
