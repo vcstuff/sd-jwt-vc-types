@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2024-02-22T01:10:37.897890+00:00",
+  "timestamp": "2024-02-25T01:15:11.719718+00:00",
   "repo": "vcstuff/sd-jwt-vc-types",
   "labels": [
     {
@@ -211,28 +211,30 @@
       "id": "PR_kwDOLJkIfM5m3Oe1",
       "title": "Work on solution for paths of claims",
       "url": "https://github.com/vcstuff/sd-jwt-vc-types/pull/5",
-      "state": "OPEN",
+      "state": "MERGED",
       "author": "danielfett",
       "authorAssociation": "COLLABORATOR",
       "assignees": [],
       "labels": [],
       "body": "\r\n[click here for rendered preview of PR](https://github.com/<repo-name>/<branch-name>/<draft-name>.html)",
       "createdAt": "2024-02-14T13:52:35Z",
-      "updatedAt": "2024-02-20T18:19:31Z",
+      "updatedAt": "2024-02-22T14:35:48Z",
       "baseRepository": "vcstuff/sd-jwt-vc-types",
       "baseRefName": "main",
       "baseRefOid": "6af73a17452331c8e64a35f7f9f3e89c197b81fb",
       "headRepository": "vcstuff/sd-jwt-vc-types",
       "headRefName": "danielfett/fix-claims",
-      "headRefOid": "49581b1ef2df2911669327fe1c33a8a4ecad52f9",
-      "closedAt": null,
-      "mergedAt": null,
-      "mergedBy": null,
-      "mergeCommit": null,
+      "headRefOid": "6dc6dfc7971f942c249c23fdf764788ca614d324",
+      "closedAt": "2024-02-22T14:35:48Z",
+      "mergedAt": "2024-02-22T14:35:48Z",
+      "mergedBy": "danielfett",
+      "mergeCommit": {
+        "oid": "0b5fb1dceacb65cf26a8f1823ca994bfcbbac669"
+      },
       "comments": [
         {
           "author": "bc-pi",
-          "authorAssociation": "NONE",
+          "authorAssociation": "CONTRIBUTOR",
           "body": "> [click here for rendered preview of PR](https://github.com/%3Crepo-name%3E/%3Cbranch-name%3E/%3Cdraft-name%3E.html)\r\n\r\nThat 404s FWIW. https://vcstuff.github.io/sd-jwt-vc-types/danielfett/fix-claims/draft-fett-oauth-sd-jwt-vc-types.html should work.\r\n\r\nI think I like this approach though.  \r\n\r\n ",
           "createdAt": "2024-02-14T23:23:17Z",
           "updatedAt": "2024-02-14T23:27:26Z"
@@ -252,7 +254,7 @@
             "abbreviatedOid": "10dcfda"
           },
           "author": "bc-pi",
-          "authorAssociation": "NONE",
+          "authorAssociation": "CONTRIBUTOR",
           "state": "COMMENTED",
           "body": "",
           "createdAt": "2024-02-15T19:32:44Z",
@@ -272,7 +274,7 @@
             "abbreviatedOid": "10dcfda"
           },
           "author": "bc-pi",
-          "authorAssociation": "NONE",
+          "authorAssociation": "CONTRIBUTOR",
           "state": "COMMENTED",
           "body": "",
           "createdAt": "2024-02-15T19:53:19Z",
@@ -292,7 +294,7 @@
             "abbreviatedOid": "10dcfda"
           },
           "author": "bc-pi",
-          "authorAssociation": "NONE",
+          "authorAssociation": "CONTRIBUTOR",
           "state": "COMMENTED",
           "body": "",
           "createdAt": "2024-02-15T20:24:29Z",
@@ -312,7 +314,7 @@
             "abbreviatedOid": "10dcfda"
           },
           "author": "bc-pi",
-          "authorAssociation": "NONE",
+          "authorAssociation": "CONTRIBUTOR",
           "state": "COMMENTED",
           "body": "",
           "createdAt": "2024-02-15T20:33:22Z",
@@ -332,7 +334,7 @@
             "abbreviatedOid": "10dcfda"
           },
           "author": "bc-pi",
-          "authorAssociation": "NONE",
+          "authorAssociation": "CONTRIBUTOR",
           "state": "COMMENTED",
           "body": "",
           "createdAt": "2024-02-15T20:39:04Z",
@@ -432,7 +434,7 @@
             "abbreviatedOid": "10dcfda"
           },
           "author": "bc-pi",
-          "authorAssociation": "NONE",
+          "authorAssociation": "CONTRIBUTOR",
           "state": "COMMENTED",
           "body": "",
           "createdAt": "2024-02-19T14:46:33Z",
@@ -452,7 +454,7 @@
             "abbreviatedOid": "10dcfda"
           },
           "author": "bc-pi",
-          "authorAssociation": "NONE",
+          "authorAssociation": "CONTRIBUTOR",
           "state": "COMMENTED",
           "body": "",
           "createdAt": "2024-02-19T14:52:30Z",
@@ -463,6 +465,26 @@
               "body": "I'm also not sure to be honest but it seemed like potentially useful simplification. The \"something like ... or something like\" case you have doesn't seem invalid but I just don't know if it's necessary either. I'm honestly not sure though so feel free to resolve this comment having considered and dismissed the idea :) ",
               "createdAt": "2024-02-19T14:52:30Z",
               "updatedAt": "2024-02-19T14:52:31Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOLJkIfM5xAvXb",
+          "commit": {
+            "abbreviatedOid": "10dcfda"
+          },
+          "author": "danielfett",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2024-02-22T14:35:08Z",
+          "updatedAt": "2024-02-22T14:35:08Z",
+          "comments": [
+            {
+              "originalPosition": 141,
+              "body": "Ok!\r\n```suggestion\r\n```",
+              "createdAt": "2024-02-22T14:35:08Z",
+              "updatedAt": "2024-02-22T14:35:08Z"
             }
           ]
         }
