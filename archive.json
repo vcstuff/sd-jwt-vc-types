@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2024-02-27T01:10:01.791214+00:00",
+  "timestamp": "2024-02-29T01:10:11.822052+00:00",
   "repo": "vcstuff/sd-jwt-vc-types",
   "labels": [
     {
@@ -132,6 +132,22 @@
       "body": "I think some configurations should be illegal but I'm not sure the spec says that today. An example would be an 'address' object that is marked authoritative, but also has a field within it that's marked as self-attested, i.e.\r\n\r\n```\r\n \"claims\":{\r\n    \"/address\":{\r\n      \"display\":{\r\n        \"en-US\":{\r\n          \"label\":\"Address\",\r\n          \"description\":\"Address at the time of graduation\"\r\n        }\r\n      },\r\n      \"verification\":\"authoritative\",\r\n      \"sd\":\"always\"\r\n    },\r\n    \"/address/street_address\":{\r\n      \"display\":{\r\n        \"en-US\":{\r\n          \"label\":\"Street Address\"\r\n        }\r\n      },\r\n      \"verification\":\"self-attested\",\r\n      \"sd\":\"always\"\r\n    }\r\n```\r\n\r\nI think that probably shouldn't be allowed, it feels difficult to verifiers to reason about.",
       "createdAt": "2024-02-13T21:20:20Z",
       "updatedAt": "2024-02-13T21:20:20Z",
+      "closedAt": null,
+      "comments": []
+    },
+    {
+      "number": 6,
+      "id": "I_kwDOLJkIfM6Ane4A",
+      "title": "same set of claims, different display data",
+      "url": "https://github.com/vcstuff/sd-jwt-vc-types/issues/6",
+      "state": "OPEN",
+      "author": "Sakurann",
+      "authorAssociation": "NONE",
+      "assignees": [],
+      "labels": [],
+      "body": "If the multiple companies-issuers are using the same set of claims (currently represented by the credential type), but want to put different display data (different company logos), how would the current design of `vct` claim work?",
+      "createdAt": "2024-02-28T00:12:35Z",
+      "updatedAt": "2024-02-28T00:12:35Z",
       "closedAt": null,
       "comments": []
     }
