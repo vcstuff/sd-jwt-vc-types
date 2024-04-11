@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2024-04-09T01:12:58.810288+00:00",
+  "timestamp": "2024-04-11T01:13:40.506157+00:00",
   "repo": "vcstuff/sd-jwt-vc-types",
   "labels": [
     {
@@ -131,9 +131,17 @@
       "labels": [],
       "body": "I think some configurations should be illegal but I'm not sure the spec says that today. An example would be an 'address' object that is marked authoritative, but also has a field within it that's marked as self-attested, i.e.\r\n\r\n```\r\n \"claims\":{\r\n    \"/address\":{\r\n      \"display\":{\r\n        \"en-US\":{\r\n          \"label\":\"Address\",\r\n          \"description\":\"Address at the time of graduation\"\r\n        }\r\n      },\r\n      \"verification\":\"authoritative\",\r\n      \"sd\":\"always\"\r\n    },\r\n    \"/address/street_address\":{\r\n      \"display\":{\r\n        \"en-US\":{\r\n          \"label\":\"Street Address\"\r\n        }\r\n      },\r\n      \"verification\":\"self-attested\",\r\n      \"sd\":\"always\"\r\n    }\r\n```\r\n\r\nI think that probably shouldn't be allowed, it feels difficult to verifiers to reason about.",
       "createdAt": "2024-02-13T21:20:20Z",
-      "updatedAt": "2024-02-13T21:20:20Z",
+      "updatedAt": "2024-04-10T15:31:06Z",
       "closedAt": null,
-      "comments": []
+      "comments": [
+        {
+          "author": "babisRoutis",
+          "authorAssociation": "NONE",
+          "body": "Perhaps, there should be some rules for the `verification` values of sub-claims.\r\n\r\nSome ideas :\r\n\r\n- If a sub-claim omits `verification` attribute, the `verification` value of its parent is being inherited \r\n- A claim with `verification` X (not null) can contain only sub-claims of the same verification value (explicit or implicit)\r\n\r\nFurthermore, would it make sense to have a top-level optional `verification` attribute, effectively marking all claims ?\r\nFor example, marking all claims of PID or mDL as `authoritative`\r\n\r\n",
+          "createdAt": "2024-04-10T15:31:05Z",
+          "updatedAt": "2024-04-10T15:31:05Z"
+        }
+      ]
     },
     {
       "number": 6,
@@ -148,6 +156,38 @@
       "body": "If the multiple companies-issuers are using the same set of claims (currently represented by the credential type), but want to put different display data (different company logos), how would the current design of `vct` claim work?",
       "createdAt": "2024-02-28T00:12:35Z",
       "updatedAt": "2024-02-28T00:12:35Z",
+      "closedAt": null,
+      "comments": []
+    },
+    {
+      "number": 7,
+      "id": "I_kwDOLJkIfM6FFK4w",
+      "title": "Clarification on Claim Path",
+      "url": "https://github.com/vcstuff/sd-jwt-vc-types/issues/7",
+      "state": "OPEN",
+      "author": "babisRoutis",
+      "authorAssociation": "NONE",
+      "assignees": [],
+      "labels": [],
+      "body": "I find paragraph 8.1 about Claim Path and especially the part that explains the processing of the path components confusing.\r\nWhat is not clear to me is the difference between a string path component pointing to a JSON array claim and the same pointer with a `null` at the end.\r\n\r\nUsing the example of paragraph\r\n\r\n```json\r\n{\r\n  \"name\": \"Arthur Dent\",\r\n  \"address\": {\r\n    \"street_address\": \"42 Market Street\",\r\n    \"city\": \"Milliways\",\r\n    \"postal_code\": \"12345\"\r\n  },\r\n  \"degrees\": [\r\n    {\r\n      \"type\": \"Bachelor of Science\",\r\n      \"university\": \"University of Betelgeuse\"\r\n    },\r\n    {\r\n      \"type\": \"Master of Science\",\r\n      \"university\": \"University of Betelgeuse\"\r\n    }\r\n  ],\r\n  \"nationalities\": [\"British\", \"Betelgeusian\"]\r\n}\r\n```\r\n\r\nI would like to ask if the two paths bellow will produce the same  results:\r\n- `[\"degrees\", null]`\r\n- `[\"degrees\"]`\r\n\r\nTo my understanding, \r\n\r\n- The first (`[\"degrees\", null]`) will return a set of two objects (each one representing a degree)\r\n- The 2nd (`[\"degrees\"]`) will return a set containing a Json Array (with the two degrees)\r\n\r\nIs this the expected outcome or both paths should return just a set of two degrees?\r\n\r\n\r\nFurthermore, I have the impression that a `path` should always begin with a string simply because it has to be applied in the top-level json object",
+      "createdAt": "2024-04-09T06:50:19Z",
+      "updatedAt": "2024-04-09T07:34:23Z",
+      "closedAt": null,
+      "comments": []
+    },
+    {
+      "number": 8,
+      "id": "I_kwDOLJkIfM6FGU8G",
+      "title": "How an absent`sd` should be treated ?",
+      "url": "https://github.com/vcstuff/sd-jwt-vc-types/issues/8",
+      "state": "OPEN",
+      "author": "babisRoutis",
+      "authorAssociation": "NONE",
+      "assignees": [],
+      "labels": [],
+      "body": "In section 8 there is the following description:\r\n\r\n> sd: A string indicating whether the claim is selectively disclosable, as described in [Section 8.4](https://vcstuff.github.io/sd-jwt-vc-types/draft-fett-oauth-sd-jwt-vc-types.html#ClaimSelectiveDisclosureMetadata). This property is OPTIONAL.\r\n\r\nThe attribute `sd` is marked as OPTIONAL show I was wondering how the absence of it should be treated?\r\n\r\nIMO, the absence of `sd` is equivalent to an `never`. \r\nI think though a clarification needs to be added.",
+      "createdAt": "2024-04-09T09:39:15Z",
+      "updatedAt": "2024-04-09T09:39:15Z",
       "closedAt": null,
       "comments": []
     }
