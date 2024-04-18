@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2024-04-16T01:12:35.090496+00:00",
+  "timestamp": "2024-04-18T01:12:44.665672+00:00",
   "repo": "vcstuff/sd-jwt-vc-types",
   "labels": [
     {
@@ -190,6 +190,37 @@
       "updatedAt": "2024-04-09T09:39:15Z",
       "closedAt": null,
       "comments": []
+    },
+    {
+      "number": 9,
+      "id": "I_kwDOLJkIfM6F-ZCg",
+      "title": "[The Infrastructure of Trust - Federation Roles ] Wallet Certification",
+      "url": "https://github.com/vcstuff/sd-jwt-vc-types/issues/9",
+      "state": "OPEN",
+      "author": "pietroACN",
+      "authorAssociation": "NONE",
+      "assignees": [],
+      "labels": [],
+      "body": "Wallet certification is described as: \"    The Wallet Instance, as a personal device, is certified as reliable through a verifiable attestation issued and signed by a trusted third party.\" [Link](https://github.com/italia/eudi-wallet-it-docs/blob/df948503e22cbf949530a07b6cee0e83e6901613/docs/en/trust.rst?plain=1#L66)\r\n\r\nAs Wallet must be certified by the appropriate cybersecurity certification body, as well as internal/external WCSD used to generate and manage cryptographic keys, Verifiable Attestation must be signed or refers to a certification issued by the appointed cybersecurity certification body.  WP would then issue an attestation that this specific instance is the same as the one certified.\r\n\r\nText would then be changed as:  \"    The Wallet Instance, as a personal device, is certified as reliable through a verifiable attestation issued and signed by Wallet Provider directlt linked to the certifications issued by the appointed cybersecurity certification body both for the Wallet and WCSD.\"\r\n",
+      "createdAt": "2024-04-17T08:42:47Z",
+      "updatedAt": "2024-04-17T09:16:12Z",
+      "closedAt": null,
+      "comments": [
+        {
+          "author": "danielfett",
+          "authorAssociation": "COLLABORATOR",
+          "body": "I don't think that the issue pertains to this repository. Can you please check if it was filed correctly?",
+          "createdAt": "2024-04-17T09:03:45Z",
+          "updatedAt": "2024-04-17T09:03:45Z"
+        },
+        {
+          "author": "peppelinux",
+          "authorAssociation": "MEMBER",
+          "body": "@pietroACN, from my understanding, the point you've raised is relevant within the context of the trust framework and the ways to attests the LoA high (eIDAS requirement, indeed), which serves as the foundation for the implementation of technologies.\r\n\r\nThis specification, by itself, may suggest or reference good or known practices in the domain of trust modeling and implementation. However, these recommendations can be omitted from the specific technical specifications, as they fall outside the scope of this document.\r\n\r\nFor instance:\r\n- A technical specification for a hydrogen-based mobile engine\r\n- National regulations that recommend, mandate, or prohibit that specific type of hydrogen engine\r\n\r\nThese two examples operate at different levels, and the latter should not restrict the technical autonomy of the former.\r\n\r\nusing normative language \"can\" became \"MUST\" and your suggestion could be evaluated as a implementation or security consideration (therefore non-normative), reusing your words it would something like:\r\n\r\n````\r\nAs a security consideration, to ensure an adequate level of assurance for the issued and stored credentials, the cryptographic \r\ndevice within the Wallet Instance must undergo certification. This certification process involves obtaining a verifiable attestation, \r\ndirectly issued and signed by the Wallet Provider, which is directly linked to the certifications provided by the designated \r\ncybersecurity certification body for both the Wallet and the Wallet's Cryptographic Security Device (WCSD).\r\n````\r\n\r\nAt the same time, as @danielfett mentioned, this repository is related to `SD-JWT VC Type Metadata` therefore related to OpenID for VCI and then to Credential Issuers, that doesn't have any particular WSCD. \r\n\r\nThe requirement to check the compliance of the requesting party, the client (wallet) for preserving the same LoA of the issued credentials, would have sense in openid 4 vci specs and not to sd-jwt that's a credential format",
+          "createdAt": "2024-04-17T09:16:12Z",
+          "updatedAt": "2024-04-17T09:16:12Z"
+        }
+      ]
     }
   ],
   "pulls": [
