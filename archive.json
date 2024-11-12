@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2024-11-10T01:44:53.217865+00:00",
+  "timestamp": "2024-11-12T01:38:39.207882+00:00",
   "repo": "vcstuff/sd-jwt-vc-types",
   "labels": [
     {
@@ -221,6 +221,22 @@
           "updatedAt": "2024-04-17T09:16:12Z"
         }
       ]
+    },
+    {
+      "number": 10,
+      "id": "I_kwDOLJkIfM6d5LSY",
+      "title": "Add background_image property",
+      "url": "https://github.com/vcstuff/sd-jwt-vc-types/issues/10",
+      "state": "OPEN",
+      "author": "JoTiTu",
+      "authorAssociation": "NONE",
+      "assignees": [],
+      "labels": [],
+      "body": "Currently the SD-JWT VC Type Metadata specs do not define a `background_image` property within the credential's `display` property. \r\nI think it would be valuable to add it to the `rendering` -> `simple`  property in order to align it with the VCI specs and allow simple .png images alongside the more complex `svg_templates`.",
+      "createdAt": "2024-11-11T11:08:47Z",
+      "updatedAt": "2024-11-11T11:08:47Z",
+      "closedAt": null,
+      "comments": []
     }
   ],
   "pulls": [
